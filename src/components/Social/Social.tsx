@@ -1,14 +1,14 @@
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { SocialProps } from "./Social.type";
 import { BaseSocial } from "./Social.style";
-import {
-  SnsAppleIcon,
-  SnsKakaoIcon,
-  SnsMetriIcon,
-  SnsNaverGreenIcon,
-  SnsNaverWhiteIcon,
-} from "../../assets/icons";
 import { themes } from "../../styles";
+import {
+  SnsKakaoIcon,
+  SnsAppleIcon,
+  SnsMetriIcon,
+  SnsNaverWhiteIcon,
+  SnsNaverGreenIcon,
+} from "./svgr/export.generated";
 
 const Social = forwardRef(
   (

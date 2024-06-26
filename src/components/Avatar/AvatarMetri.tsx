@@ -13,7 +13,7 @@ export const AvatarMetri = React.memo<AvatarIconProps>(
         height={size}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox={`0 0 ${size} ${size}`}
+        viewBox="0 0 100 100"
       >
         <g clipPath="url(#avatar_metri_svg__clip0_1318_15994)">
           <circle cx={50} cy={50} r={50} fill="#BDBDBD" />

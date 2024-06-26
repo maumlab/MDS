@@ -3,6 +3,8 @@ import React from "react";
 import * as IconComponents from "./export.generated";
 import styled from "@emotion/styled";
 import { Text } from "../../components";
+import { IconSize } from "./icon.type";
+import { AvatarSize } from "../../components/Avatar/Avatar.type";
 
 export default {
   title: "components/Icon",
@@ -11,20 +13,7 @@ export default {
 };
 
 export const Template = (args) => {
-  return (
-    <Container>
-      <Wrapper>
-        <Text>Social</Text>
-        <Contents>
-          <IconComponents.SnsAppleIcon {...args} />
-          <IconComponents.SnsKakaoIcon {...args} />
-          <IconComponents.SnsMetriIcon {...args} />
-          <IconComponents.SnsNaverGreenIcon {...args} />
-          <IconComponents.SnsNaverWhiteIcon {...args} />
-        </Contents>
-      </Wrapper>
-    </Container>
-  );
+  return <Container></Container>;
 };
 
 const Container = styled.div`

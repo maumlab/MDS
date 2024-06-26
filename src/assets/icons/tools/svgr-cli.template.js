@@ -10,8 +10,8 @@ function defaultTemplate({ template }, _, { componentName, jsx }) {
     import { themes } from '../../../styles';
     import Svg from '../../svg';
     
-    export const ${IconComponentName} = React.memo<IconProps>(({ size = IconSize.S, fillColor = 'gray2', viewBox = '0 0 24 24',suffixForId, ...props }) => {
-      // const uniqueId = suffixForId ?? String(Math.random().toString(36).slice(2, 11));
+    export const ${IconComponentName} = React.memo<IconProps>(({ size = IconSize.S, fillColor = 'gray2', suffixForId, ...props }) => {
+      const uniqueId = suffixForId ?? String(Math.random().toString(36).slice(2, 11));
       return ${jsx}
     })
   `;
