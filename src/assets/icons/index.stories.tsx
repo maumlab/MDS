@@ -4,7 +4,6 @@ import * as IconComponents from "./export.generated";
 import styled from "@emotion/styled";
 import { Text } from "../../components";
 import { IconSize } from "./icon.type";
-import { AvatarSize } from "../../components/Avatar/Avatar.type";
 
 export default {
   title: "components/Icon",

@@ -1,12 +1,9 @@
 import React from "react";
 import { IconProps } from "../../../assets/icons/index";
 import { IconSize } from "../../../assets/icons/icon.type";
-import { themes } from "../../../styles";
 import Svg from "../../../assets/svg";
 export const SnsKakao = React.memo<IconProps>(
   ({ size = IconSize.S, fillColor = "gray2", suffixForId, ...props }) => {
-    const uniqueId =
-      suffixForId ?? String(Math.random().toString(36).slice(2, 11));
     return (
       <Svg
         {...props}

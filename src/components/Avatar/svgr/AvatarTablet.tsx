@@ -1,9 +1,9 @@
 import React from "react";
-import Svg from "../../assets/svg";
-import { AvatarIconProps, AvatarSize } from "./Avatar.type";
+import { AvatarIconProps, AvatarSize } from "../Avatar.type";
+import Svg from "../../../assets/svg";
 
 export const AvatarTablet = React.memo<AvatarIconProps>(
-  ({ size = AvatarSize.md, suffixForId, ...props }) => {
+  ({ size = AvatarSize.xl, suffixForId, ...props }) => {
     const uniqueId =
       suffixForId ?? String(Math.random().toString(36).slice(2, 11));
     return (
@@ -11,11 +11,11 @@ export const AvatarTablet = React.memo<AvatarIconProps>(
         {...props}
         width={size}
         height={size}
+        viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox={`0 0 ${size} ${size}`}
       >
-        <g clipPath="url(#avatar_tablet_svg__clip0_1318_16008)">
+        <g clipPath="url(#avatar_tablet_svg__clip0_1318_16132)">
           <path
             d="M100 50c0 27.614-22.386 50-50 50S0 77.614 0 50 22.386 0 50 0s50 22.386 50 50z"
             fill="#fff"
@@ -32,7 +32,7 @@ export const AvatarTablet = React.memo<AvatarIconProps>(
           />
         </g>
         <defs>
-          <clipPath id={`avatar_tablet_svg__clip0_1318_16008__${uniqueId}`}>
+          <clipPath id={`avatar_tablet_svg__clip0_1318_16132__${uniqueId}`}>
             <path fill="#fff" d="M0 0h100v100H0z" />
           </clipPath>
         </defs>

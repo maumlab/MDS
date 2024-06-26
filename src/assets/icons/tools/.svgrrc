@@ -6,6 +6,7 @@
   },
   "svgProps": {
     "width": "{size}",
-    "height": "{size}"
+    "height": "{size}",
+    "viewBox": "{viewBox}"
   }
 }
