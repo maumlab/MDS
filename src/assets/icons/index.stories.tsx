@@ -14,36 +14,7 @@ export const Template = (args) => {
   return (
     <Container>
       <Wrapper>
-        <Text typo="h4">Chevron</Text>
-        <Contents>
-          <IconComponents.ChevronUpIcon {...args} />
-          <IconComponents.ChevronRightIcon {...args} />
-          <IconComponents.ChevronDownIcon {...args} />
-          <IconComponents.ChevronLeftIcon {...args} />
-        </Contents>
-      </Wrapper>
-      <Wrapper>
-        <Text typo="h4">Warning</Text>
-        <Contents>
-          <IconComponents.WarningCircleOutlineIcon {...args} />
-        </Contents>
-      </Wrapper>
-      <Wrapper>
-        <Text typo="h4">Check</Text>
-        <Contents>
-          <IconComponents.CheckCircleOutlineIcon {...args} />
-          <IconComponents.CheckIcon {...args} size={16} viewBox="0 0 16 16" />
-        </Contents>
-      </Wrapper>
-      <Wrapper>
-        <Text typo="h4">Cancel</Text>
-        <Contents>
-          <IconComponents.CancelIcon {...args} />
-          <IconComponents.TrashIcon {...args} />
-        </Contents>
-      </Wrapper>
-      <Wrapper>
-        <Text typo="h4">Social</Text>
+        <Text>Social</Text>
         <Contents>
           <IconComponents.SnsAppleIcon {...args} />
           <IconComponents.SnsKakaoIcon {...args} />

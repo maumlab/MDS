@@ -1,6 +1,3 @@
-export { default as Text } from "./Text";
-export type * from "./Text";
-
 export {
   Badge,
   StatusBadge,
@@ -11,3 +8,7 @@ export {
   BadgeRole,
   BadgeSearch,
 } from "./Badge";
+
+export { default as Social } from "./Social";
+
+export { default as Text } from "./Text";

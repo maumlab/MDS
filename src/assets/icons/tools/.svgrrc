@@ -2,7 +2,7 @@
   "expandProps": "start",
   "dimensions": true,
   "replaceAttrValues": {
-    "#4F4F4F": "{Themes.Colors[fillColor]}"
+    "#4F4F4F": "{themes.colors[fillColor]}"
   },
   "svgProps": {
     "width": "{size}",

@@ -1,0 +1,63 @@
+import { ComponentPropsWithRef, forwardRef } from "react";
+import { SocialProps } from "./Social.type";
+import { BaseSocial } from "./Social.style";
+import {
+  SnsAppleIcon,
+  SnsKakaoIcon,
+  SnsMetriIcon,
+  SnsNaverGreenIcon,
+  SnsNaverWhiteIcon,
+} from "../../assets/icons";
+import { themes } from "../../styles";
+
+const Social = forwardRef(
+  (
+    { variant, type, ...props }: SocialProps,
+    ref: ComponentPropsWithRef<"button">["ref"]
+  ) => {
+    let icon = undefined;
+    let bgColor = undefined;
+    let text = undefined;
+
+    switch (variant) {
+      case "KAKAO":
+        icon = <SnsKakaoIcon />;
+        bgColor = type === "primary" ? "#FFDE00" : themes.colors.white;
+        text = type === "primary" && "카카오로 시작";
+        break;
+      case "APPLE":
+        icon = <SnsAppleIcon />;
+        bgColor = themes.colors.white;
+        break;
+      case "METRI":
+        icon = <SnsMetriIcon />;
+        bgColor = themes.colors.white;
+        break;
+      case "NAVER":
+        icon =
+          type === "primary" ? <SnsNaverWhiteIcon /> : <SnsNaverGreenIcon />;
+        bgColor = type === "primary" ? "#03C75A" : themes.colors.white;
+        text = type === "primary" && "네이버로 시작";
+        break;
+    }
+
+    return (
+      <BaseSocial
+        ref={ref}
+        data-type={type}
+        {...props}
+        style={{
+          ...props.style,
+          backgroundColor: bgColor,
+          color:
+            variant === "NAVER" ? themes.colors.white : themes.colors.black,
+        }}
+      >
+        {icon}
+        {text}
+      </BaseSocial>
+    );
+  }
+);
+
+export default Social;
