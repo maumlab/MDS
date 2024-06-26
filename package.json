@@ -19,7 +19,8 @@
     "build": "rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "icon": "cd src/assets/icons && sh generate-icon.sh"
+    "icon": "cd src/assets/icons && sh generate-icon.sh",
+    "component": "sh shell/generate-component.sh"
   },
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
