@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Switch from "./Switch";
 import { useForm } from "react-hook-form/dist/index.ie11";
+import { styled } from "../../styles";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -21,16 +22,15 @@ interface IForm {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Switch> = (args) => {
-  const { register, getValues, watch } = useForm<IForm>({
+  const { register, watch } = useForm<IForm>({
     defaultValues: {
       second: true,
     },
   });
   const { second } = watch();
-  console.log(second);
 
   return (
-    <div>
+    <Container>
       <Switch {...args} ref={register} name="first" />
       <Switch
         {...args}
@@ -40,10 +40,15 @@ const Template: ComponentStory<typeof Switch> = (args) => {
       />
       <Switch {...args} disabled />
       <Switch {...args} checked disabled />
-    </div>
+    </Container>
   );
 };
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {};
+
+const Container = styled.div`
+  display: flex;
+  gap: 10px;
+`;

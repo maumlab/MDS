@@ -17,11 +17,14 @@ export const BaseSwitch = styled.label`
 export const Checkbox = styled.input`
   &:not(:checked) + span {
     color: ${themes.colors.gray3};
+    /* justify-content: flex-end; */
+    padding-left: 30px;
   }
 
   &:checked + span {
     background-color: ${themes.colors.blue};
     color: ${themes.colors.blueDark1};
+    padding-left: 10px;
 
     &::before {
       -webkit-transform: translateX(34px);
@@ -61,6 +64,9 @@ export const Slider = styled.span`
   font-size: 11px;
   font-weight: 500;
   line-height: normal;
+
+  display: flex;
+  align-items: center;
 
   &::before {
     position: absolute;

@@ -1,3 +1,5 @@
+export { default as Avatar, AvatarSize } from "./Avatar";
+
 export {
   Badge,
   StatusBadge,
@@ -10,5 +12,7 @@ export {
 } from "./Badge";
 
 export { default as Social } from "./Social";
+
+export { default as Switch } from "./Switch";
 
 export { default as Text } from "./Text";
