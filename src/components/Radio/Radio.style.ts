@@ -44,7 +44,7 @@ export const BaseRadioInput = styled.input`
   }
 
   &:not(:checked):disabled {
-    border-width: 10px;
+    background-color: ${themes.colors.gray3};
   }
 
   &:focus-visible {

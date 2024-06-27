@@ -73,6 +73,15 @@ export const BaseCheckboxInput = styled.input`
     cursor: not-allowed;
   }
 
+  &:not(:checked):disabled {
+    background-color: ${themes.colors.gray3};
+  }
+
+  &:checked:disabled {
+    border-color: ${themes.colors.gray3};
+    background-color: ${themes.colors.gray3};
+  }
+
   @media (hover: hover) {
     &:not(:disabled):hover {
       opacity: 0.7;
