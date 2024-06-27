@@ -7,9 +7,9 @@ const AlertMessage = ({ type, message }: AlertMessageProps) => {
   const color = type === "error" ? "redDark1" : "green";
   const icon =
     type === "error" ? (
-      <OutlinedAlertIcon fillColor={color} />
+      <OutlinedAlertIcon size={20} fillColor={color} />
     ) : (
-      <OutlinedCheckIcon fillColor={color} />
+      <OutlinedCheckIcon size={20} fillColor={color} />
     );
 
   return (

@@ -1,3 +1,5 @@
+export { default as AlertMessage } from "./AlertMessage";
+
 export { default as Avatar, AvatarSize } from "./Avatar";
 
 export {
@@ -10,6 +12,10 @@ export {
   BadgeRole,
   BadgeSearch,
 } from "./Badge";
+
+export { default as Checkbox } from "./Checkbox";
+
+export { default as Input } from "./Input";
 
 export { default as Radio } from "./Radio";
 
