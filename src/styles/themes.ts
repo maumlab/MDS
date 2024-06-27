@@ -198,12 +198,17 @@ const spacing = {
   xxl: 32,
 } as const;
 
+const focusVisible = css`
+  box-shadow: ${colors.blue} 0px 0px 0px 2px;
+`;
+
 const themes = {
   colors,
   typos,
   radius,
   shadow,
   spacing,
+  focusVisible,
 } as const;
 
 type ColorType = keyof typeof colors;

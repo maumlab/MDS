@@ -34,7 +34,7 @@ export const Checkbox = styled.input`
   }
 
   &:focus-visible + span {
-    box-shadow: ${themes.colors.blue} 0px 1px 4px;
+    ${themes.focusVisible}
   }
 
   &:disabled + span {

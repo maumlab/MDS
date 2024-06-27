@@ -8,23 +8,16 @@ export const BaseRadio = styled.label`
   ${themes.typos.b4}
   color: ${themes.colors.gray3};
 
-  & > input[type="radio"]:hover {
-    opacity: 0.7;
-  }
+  cursor: pointer;
 
-  & > input[type="radio"]:disabled {
+  &:has(input[type="radio"]:disabled) {
     opacity: 0.3;
     cursor: not-allowed;
   }
 
   @media (hover: hover) {
-    &:has(input[type="radio"]:disabled:hover) {
-      cursor: not-allowed;
-    }
-
     &:has(input[type="radio"]:not(:disabled):hover) {
       opacity: 0.7;
-      cursor: pointer;
     }
   }
 `;
@@ -39,17 +32,28 @@ export const BaseRadioInput = styled.input`
 
   transition: border-width 0.1s;
 
+  cursor: pointer;
+
   &:checked {
     border: 5px solid ${themes.colors.blue};
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   &:not(:checked):disabled {
     border-width: 10px;
   }
 
+  &:focus-visible {
+    ${themes.focusVisible};
+  }
+
   @media (hover: hover) {
     &:not(:disabled):hover {
-      cursor: pointer;
+      opacity: 0.7;
     }
   }
 `;
