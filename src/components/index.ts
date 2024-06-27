@@ -24,3 +24,5 @@ export { default as Social } from "./Social";
 export { default as Switch } from "./Switch";
 
 export { default as Text } from "./Text";
+
+export { default as WithLabel } from "./WithLabel";
