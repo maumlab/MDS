@@ -12,23 +12,20 @@ export default {
 };
 
 export const Template = (args) => {
-  return <Container></Container>;
+  const icons = Object.keys(IconComponents);
+
+  return (
+    <Container>
+      {icons.map((icon, idx) => {
+        const Icon = IconComponents[icon];
+        return <Icon key={idx} />;
+      })}
+    </Container>
+  );
 };
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   gap: 10px;
-`;
-
-const Contents = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-wrap: wrap;
 `;
