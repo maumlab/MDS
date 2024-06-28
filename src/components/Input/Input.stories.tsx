@@ -1,7 +1,10 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
+import WithLabel from "../WithLabel";
 import Input from "./Input";
+import { useForm } from "react-hook-form/dist/index.ie11";
+import { themes } from "../../styles";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,10 +19,29 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Input> = (args) => {
+  const { register, formState } = useForm<{ input: string }>({});
+  const { isDirty } = formState;
+
   return (
-    <div>
-      <Input {...args} placeholder="내용을 입력해주세요." />
-      <Input {...args} placeholder="내용을 입력해주세요." disabled />
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: themes.spacing.xl,
+      }}
+    >
+      <WithLabel label="제목">
+        <Input
+          {...args}
+          placeholder="내용을 입력해주세요."
+          ref={register}
+          name="input"
+          error={isDirty ? "에러 메세지" : undefined}
+        />
+      </WithLabel>
+      <WithLabel label="비밀번호">
+        <Input {...args} placeholder="내용을 입력해주세요." disabled />
+      </WithLabel>
       <Input
         {...args}
         placeholder="내용을 입력해주세요."

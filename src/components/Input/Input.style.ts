@@ -2,10 +2,11 @@ import styled from "@emotion/styled";
 import { themes } from "../../styles";
 
 export const BaseContainer = styled.div`
-  height: 72px;
+  /* height: 72px; */
   display: flex;
   flex-direction: column;
   gap: ${themes.spacing.xxs}px;
+  position: relative;
 `;
 
 export const BaseInput = styled.input`
@@ -18,7 +19,7 @@ export const BaseInput = styled.input`
 
   border: 1px solid ${themes.colors.gray4};
   ${themes.radius.md}
-  ${themes.typos.captionRegular};
+  ${themes.typos.b4};
   line-height: 22px;
   color: ${themes.colors.gray1};
   width: 100%;
@@ -45,4 +46,10 @@ export const BaseInput = styled.input`
   &[data-success="true"] {
     border-color: ${themes.colors.green};
   }
+`;
+
+export const Absolute = styled.div`
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
 `;

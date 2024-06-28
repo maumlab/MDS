@@ -7,15 +7,15 @@ const AlertMessage = ({ type, message }: AlertMessageProps) => {
   const color = type === "error" ? "redDark1" : "green";
   const icon =
     type === "error" ? (
-      <OutlinedAlertIcon size={20} fillColor={color} />
+      <OutlinedAlertIcon size={16} fillColor={color} />
     ) : (
-      <OutlinedCheckIcon size={20} fillColor={color} />
+      <OutlinedCheckIcon size={16} fillColor={color} />
     );
 
   return (
     <BaseAlertMessage>
       {icon}
-      <Text typo="captionMedium" color={color}>
+      <Text typo="caption12Medium" lineHeight={16} color={color}>
         {message}
       </Text>
     </BaseAlertMessage>

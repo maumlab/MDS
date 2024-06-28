@@ -1,6 +1,6 @@
 import { ComponentPropsWithRef, forwardRef } from "react";
 import { InputProps } from "./Input.type";
-import { BaseContainer, BaseInput } from "./Input.style";
+import { Absolute, BaseContainer, BaseInput } from "./Input.style";
 import AlertMessage from "../AlertMessage";
 
 const Input = forwardRef(
@@ -16,8 +16,10 @@ const Input = forwardRef(
           data-error={!!error}
           data-success={!!success}
         />
-        {error && <AlertMessage type="error" message={error} />}
-        {success && <AlertMessage type="success" message={success} />}
+        <Absolute>
+          {error && <AlertMessage type="error" message={error} />}
+          {success && <AlertMessage type="success" message={success} />}
+        </Absolute>
       </BaseContainer>
     );
   }

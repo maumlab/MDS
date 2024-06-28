@@ -73,25 +73,30 @@ const getSizeWeight = (typo: TypoType) => {
         size: FONT_SIZES.sm,
         weight: "regular",
       };
-    case "captionTitle":
+    case "caption18Medium":
       return {
         size: FONT_SIZES.md,
         weight: "medium",
       };
-    case "captionBold":
+    case "caption14Bold":
       return {
         size: FONT_SIZES.xs,
         weight: "bold",
       };
-    case "captionMedium":
+    case "caption14Medium":
       return {
         size: FONT_SIZES.xs,
         weight: "medium",
       };
-    case "captionRegular":
+    case "caption14Regular":
       return {
         size: FONT_SIZES.xs,
         weight: "regular",
+      };
+    case "caption12Medium":
+      return {
+        size: FONT_SIZES.xxs,
+        weight: "medium",
       };
     case "badge":
       return {

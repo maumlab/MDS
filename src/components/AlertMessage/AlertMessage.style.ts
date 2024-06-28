@@ -5,5 +5,5 @@ export const BaseAlertMessage = styled.div`
   display: flex;
   align-items: center;
   gap: ${themes.spacing.xs}px;
-  line-height: normal;
+  line-height: 16px;
 `;

@@ -129,21 +129,25 @@ const typos = {
     font-weight: ${FONT_WEIGHTS.regular};
     font-size: ${FONT_SIZES.sm}px;
   `,
-  captionTitle: css`
+  caption18Medium: css`
     font-weight: ${FONT_WEIGHTS.medium};
     font-size: ${FONT_SIZES.md}px;
   `,
-  captionBold: css`
+  caption14Bold: css`
     font-weight: ${FONT_WEIGHTS.bold};
     font-size: ${FONT_SIZES.xs}px;
   `,
-  captionMedium: css`
+  caption14Medium: css`
     font-weight: ${FONT_WEIGHTS.medium};
     font-size: ${FONT_SIZES.xs}px;
   `,
-  captionRegular: css`
+  caption14Regular: css`
     font-weight: ${FONT_WEIGHTS.regular};
     font-size: ${FONT_SIZES.xs}px;
+  `,
+  caption12Medium: css`
+    font-weight: ${FONT_WEIGHTS.medium};
+    font-size: ${FONT_SIZES.xxs}px;
   `,
   badge: css`
     font-weight: ${FONT_WEIGHTS.medium};

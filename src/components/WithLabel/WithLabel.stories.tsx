@@ -15,8 +15,8 @@ export default {
 const Template: ComponentStory<typeof WithLabel> = (args) => {
   return (
     <div>
-      <WithLabel label="제목">
-        <Input />
+      <WithLabel {...args} label="제목">
+        <Input placeholder="내용을 입력해 주세요." />
       </WithLabel>
     </div>
   );
@@ -24,4 +24,6 @@ const Template: ComponentStory<typeof WithLabel> = (args) => {
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  required: false,
+};
