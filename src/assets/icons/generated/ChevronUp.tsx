@@ -11,8 +11,6 @@ export const ChevronUp = React.memo<IconProps>(
     suffixForId,
     ...props
   }) => {
-    const uniqueId =
-      suffixForId ?? String(Math.random().toString(36).slice(2, 11));
     return (
       <Svg
         {...props}

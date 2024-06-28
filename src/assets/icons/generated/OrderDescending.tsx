@@ -1,7 +1,6 @@
 import React from "react";
 import { IconProps } from "../index";
 import { IconSize } from "../icon.type";
-import { themes } from "../../../styles";
 import Svg from "../../svg";
 export const OrderDescending = React.memo<IconProps>(
   ({
@@ -11,8 +10,6 @@ export const OrderDescending = React.memo<IconProps>(
     suffixForId,
     ...props
   }) => {
-    const uniqueId =
-      suffixForId ?? String(Math.random().toString(36).slice(2, 11));
     return (
       <Svg
         {...props}
