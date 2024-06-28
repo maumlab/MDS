@@ -1,0 +1,63 @@
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+
+import WithLabel from "../WithLabel";
+import Input from "./Input";
+import { useForm } from "react-hook-form/dist/index.ie11";
+import { themes } from "../../styles";
+
+// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
+export default {
+  title: "components/Input",
+  component: Input,
+  tags: ["autodocs"],
+  parameters: {
+    componentSubtitle:
+      "문자열을 입력받는 컴포넌트입니다. 높이 값은 고정이며, 넓이는 여백에 따라 결정됩니다. 에러 메세지나 확인 메세지 간격은 동일합니다.",
+  },
+} as ComponentMeta<typeof Input>;
+
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const Template: ComponentStory<typeof Input> = (args) => {
+  const { register, formState } = useForm<{ input: string }>({});
+  const { isDirty } = formState;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: themes.spacing.xl,
+      }}
+    >
+      <WithLabel label="제목">
+        <Input
+          {...args}
+          placeholder="내용을 입력해주세요."
+          ref={register}
+          name="input"
+          error={isDirty ? "에러 메세지" : undefined}
+        />
+      </WithLabel>
+      <WithLabel label="비밀번호">
+        <Input {...args} placeholder="내용을 입력해주세요." disabled />
+      </WithLabel>
+      <Input
+        {...args}
+        placeholder="내용을 입력해주세요."
+        disabled
+        value="내용을 입력해주세요."
+      />
+      <Input {...args} placeholder="내용을 입력해주세요." error="에러 메세지" />
+      <Input
+        {...args}
+        placeholder="내용을 입력해주세요."
+        success="성공 메세지"
+      />
+    </div>
+  );
+};
+
+export const Primary = Template.bind({});
+// More on args: https://storybook.js.org/docs/react/writing-stories/args
+Primary.args = {};

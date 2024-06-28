@@ -1,0 +1,25 @@
+name: "Deploy"
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+
+  deploy:
+    # needs: publish-gpr
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: chromaui/action@v1
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
