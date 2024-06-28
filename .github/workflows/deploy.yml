@@ -1,25 +1,26 @@
 name: "Deploy"
 
-on: push
+on:
+  push:
+    branches: [main]
 
 jobs:
-  build:
+  chromatic:
+    name: Run Chromatic
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
-          node-version: 16
-      - run: npm ci
-
-  deploy:
-    # needs: publish-gpr
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: chromaui/action@v1
-        # Options required for Chromatic's GitHub Action
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
         with:
-          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/intro-to-storybook/react/ko/deploy/ to obtain it
+          node-version: 20
+      - name: Install dependencies
+        # ⚠️ See your package manager's documentation for the correct command to install dependencies in a CI environment.
+        run: npm ci
+      - name: Run Chromatic
+        uses: chromaui/action@latest
+        with:
+          # ⚠️ Make sure to configure a `CHROMATIC_PROJECT_TOKEN` repository secret
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          token: ${{ secrets.GITHUB_TOKEN }}
