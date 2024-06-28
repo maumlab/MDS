@@ -19,6 +19,8 @@ export { default as Input } from "./Input";
 
 export { default as Radio } from "./Radio";
 
+export { default as SegmentedControl } from "./SegmentedControl";
+
 export { default as Social } from "./Social";
 
 export { default as Switch } from "./Switch";
