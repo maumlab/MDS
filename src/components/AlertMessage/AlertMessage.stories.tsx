@@ -12,14 +12,24 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof AlertMessage> = (args) => {
-  return (
-    <div>
-      <AlertMessage {...args} type="error" message="메시지입니다." />
-      <AlertMessage {...args} type="success" message="메시지입니다." />
-    </div>
-  );
+  return <AlertMessage {...args} />;
+};
+
+const SuccessTemplate: ComponentStory<typeof AlertMessage> = (args) => {
+  return <AlertMessage {...args} type="success" message="메시지입니다." />;
+};
+
+const ErrorTemplate: ComponentStory<typeof AlertMessage> = (args) => {
+  return <AlertMessage {...args} type="error" message="메시지입니다." />;
 };
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  type: "success",
+  message: "메시지입니다.",
+};
+
+export const Success = SuccessTemplate.bind({});
+
+export const Error = ErrorTemplate.bind({});
