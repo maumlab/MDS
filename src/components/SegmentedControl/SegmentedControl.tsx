@@ -8,13 +8,13 @@ import {
 import Text from "../Text";
 
 const SegmentedControlProvider = createContext<SegmentedControlProviderProps>({
-  variant: "padded",
+  variant: "basic",
   selectedValue: "",
   onChange: () => null,
 });
 
 const SegmentedControl = ({
-  variant = "padded",
+  variant = "basic",
   selectedValue,
   onChange,
   children,

@@ -1,6 +1,6 @@
 import React from "react";
 
-type SegmentedControlVariant = "padded" | "contained";
+type SegmentedControlVariant = "basic" | "outlined";
 
 export type SegmentedControlProviderProps = {
   variant?: SegmentedControlVariant;

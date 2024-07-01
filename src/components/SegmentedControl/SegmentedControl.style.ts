@@ -6,12 +6,12 @@ export const BaseContainer = styled.div`
   height: 48px;
   display: flex;
 
-  &[data-variant="padded"] {
+  &[data-variant="basic"] {
     padding: 2px 1px;
     background-color: ${themes.colors.gray6};
   }
 
-  &[data-variant="contained"] {
+  &[data-variant="outlined"] {
     background-color: ${themes.colors.white};
   }
 `;
@@ -27,7 +27,7 @@ export const ItemContainer = styled.button`
 
   transition: background-color 0.2s;
 
-  &[data-variant="contained"] {
+  &[data-variant="outlined"] {
     border: 1px solid ${themes.colors.gray5};
 
     &:first-of-type {
@@ -48,13 +48,13 @@ export const ItemContainer = styled.button`
   /* active */
   &[data-active="true"] {
     /* variant */
-    &[data-variant="padded"] {
+    &[data-variant="basic"] {
       background-color: ${themes.colors.white};
       border: 1px solid ${themes.colors.blue};
       ${themes.radius.md};
     }
 
-    &[data-variant="contained"] {
+    &[data-variant="outlined"] {
       border-color: ${themes.colors.blue};
       background-color: ${themes.colors.blueLight3};
 
