@@ -18,33 +18,46 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
-const SizeTemplate: ComponentStory<typeof Avatar> = (args) => {
+const MetriTemplate: ComponentStory<typeof Avatar> = (args) => {
   return (
     <div>
-      <div>
-        <Avatar variant="metri" size={AvatarSize.xl} />
-        <Avatar variant="metri" size={AvatarSize.lg} />
-        <Avatar variant="metri" size={AvatarSize.md} />
-        <Avatar variant="metri" size={AvatarSize.sm} />
-      </div>
-      <div>
-        <Avatar variant="tablet" size={AvatarSize.xl} />
-        <Avatar variant="tablet" size={AvatarSize.lg} />
-        <Avatar variant="tablet" size={AvatarSize.md} />
-        <Avatar variant="tablet" size={AvatarSize.sm} />
-      </div>
-      <div>
-        <Avatar variant="client" size={AvatarSize.xl} />
-        <Avatar variant="client" size={AvatarSize.lg} />
-        <Avatar variant="client" size={AvatarSize.md} />
-        <Avatar variant="client" size={AvatarSize.sm} />
-      </div>
-      <div>
-        <Avatar variant="dashboard" size={AvatarSize.xl} />
-        <Avatar variant="dashboard" size={AvatarSize.lg} />
-        <Avatar variant="dashboard" size={AvatarSize.md} />
-        <Avatar variant="dashboard" size={AvatarSize.sm} />
-      </div>
+      <Avatar variant="metri" size={AvatarSize.xl} />
+      <Avatar variant="metri" size={AvatarSize.lg} />
+      <Avatar variant="metri" size={AvatarSize.md} />
+      <Avatar variant="metri" size={AvatarSize.sm} />
+    </div>
+  );
+};
+
+const TabletTemplate: ComponentStory<typeof Avatar> = (args) => {
+  return (
+    <div>
+      <Avatar variant="tablet" size={AvatarSize.xl} />
+      <Avatar variant="tablet" size={AvatarSize.lg} />
+      <Avatar variant="tablet" size={AvatarSize.md} />
+      <Avatar variant="tablet" size={AvatarSize.sm} />
+    </div>
+  );
+};
+
+const ClientTemplate: ComponentStory<typeof Avatar> = (args) => {
+  return (
+    <div>
+      <Avatar variant="client" size={AvatarSize.xl} />
+      <Avatar variant="client" size={AvatarSize.lg} />
+      <Avatar variant="client" size={AvatarSize.md} />
+      <Avatar variant="client" size={AvatarSize.sm} />
+    </div>
+  );
+};
+
+const DashboardTemplate: ComponentStory<typeof Avatar> = (args) => {
+  return (
+    <div>
+      <Avatar variant="dashboard" size={AvatarSize.xl} />
+      <Avatar variant="dashboard" size={AvatarSize.lg} />
+      <Avatar variant="dashboard" size={AvatarSize.md} />
+      <Avatar variant="dashboard" size={AvatarSize.sm} />
     </div>
   );
 };
@@ -56,4 +69,10 @@ Primary.args = {
   size: AvatarSize.xl,
 };
 
-export const Size = SizeTemplate.bind({});
+export const Metri = MetriTemplate.bind({});
+
+export const Tablet = TabletTemplate.bind({});
+
+export const Client = ClientTemplate.bind({});
+
+export const Dashboard = DashboardTemplate.bind({});
