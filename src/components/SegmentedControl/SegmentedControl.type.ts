@@ -1,16 +1,17 @@
 import React from "react";
 
-type SegmentedControlVariant = "basic" | "outlined";
+export type SegmentedControlVariant = "basic" | "outlined";
 
 export type SegmentedControlProviderProps = {
-  variant?: SegmentedControlVariant;
+  variant: SegmentedControlVariant;
   selectedValue: string;
   onChange: (value: string) => void;
 };
 
 export type SegmentedControlProps = {
   children: React.ReactNode;
-} & SegmentedControlProviderProps;
+  variant?: SegmentedControlVariant;
+} & Omit<SegmentedControlProviderProps, "variant">;
 
 export type SegmentedControlItemProps = {
   children: React.ReactNode;
