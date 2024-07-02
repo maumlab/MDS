@@ -44,7 +44,7 @@ const Social = forwardRef(
     return (
       <BaseSocial
         ref={ref}
-        data-type={type}
+        $type={type}
         {...props}
         style={{
           ...props.style,
