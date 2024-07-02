@@ -1,5 +1,7 @@
 import { ReactNode } from "react";
 
+export type BadgeVariant = "basic" | "status" | "role" | "level" | "search";
+
 export enum BadgeStatus {
   Sent = "Sent", // 검사 대기
   Progress = "Progress", // 검사 중

@@ -22,7 +22,7 @@ const StatusBadge = forwardRef<ElementRef<"span">, StatusBadgeProps>(
     }
 
     return (
-      <BaseBadge data-variant="status" data-status={status} ref={ref}>
+      <BaseBadge $variant="status" data-status={status} ref={ref}>
         {label}
       </BaseBadge>
     );

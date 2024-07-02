@@ -21,7 +21,7 @@ const SearchBadge = forwardRef<ElementRef<"span">, SearchBadgeProps>(
     }
 
     return (
-      <BaseBadge data-variant="search" data-search={search} ref={ref}>
+      <BaseBadge $variant="search" data-search={search} ref={ref}>
         {label}
       </BaseBadge>
     );
