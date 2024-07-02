@@ -3,10 +3,27 @@ import { ButtonProps } from "./Button.type";
 import { BaseButton } from "./Button.style";
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ asChild, ...props }: ButtonProps, ref) => {
+  (
+    {
+      variant = "primary",
+      size = "xl",
+      loading = false,
+      children,
+      disabled = false,
+      ...props
+    }: ButtonProps,
+    ref
+  ) => {
     return (
-      <BaseButton {...props} ref={ref}>
-        Button
+      // TODO 추후 로딩 컴포넌트가 생긴다면 로딩 컴포넌트로 변경
+      <BaseButton
+        {...props}
+        disabled={disabled}
+        ref={ref}
+        $variant={variant}
+        $size={size}
+      >
+        {loading ? "Loading..." : children}
       </BaseButton>
     );
   }
