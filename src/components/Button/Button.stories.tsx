@@ -19,6 +19,80 @@ const Template: ComponentStory<typeof Button> = (args) => {
   return <Button {...args}>Button</Button>;
 };
 
+const BasicTemplate: ComponentStory<typeof Button> = (args) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <Button {...args}>Button</Button>
+      <Button {...args} size="lg">
+        Button
+      </Button>
+      <Button {...args} size="md">
+        Button
+      </Button>
+      <Button {...args} size="sm">
+        Button
+      </Button>
+    </div>
+  );
+};
+
+const SecondaryTemplate: ComponentStory<typeof Button> = (args) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <Button {...args} variant="secondary">
+        Button
+      </Button>
+      <Button {...args} variant="secondary" size="lg">
+        Button
+      </Button>
+      <Button {...args} variant="secondary" size="md">
+        Button
+      </Button>
+      <Button {...args} variant="secondary" size="sm">
+        Button
+      </Button>
+    </div>
+  );
+};
+
+const BlackTemplate: ComponentStory<typeof Button> = (args) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <Button {...args} variant="black">
+        Button
+      </Button>
+      <Button {...args} variant="black" size="lg">
+        Button
+      </Button>
+      <Button {...args} variant="black" size="md">
+        Button
+      </Button>
+      <Button {...args} variant="black" size="sm">
+        Button
+      </Button>
+    </div>
+  );
+};
+
+const GrayTemplate: ComponentStory<typeof Button> = (args) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+      <Button {...args} variant="gray">
+        Button
+      </Button>
+      <Button {...args} variant="gray" size="lg">
+        Button
+      </Button>
+      <Button {...args} variant="gray" size="md">
+        Button
+      </Button>
+      <Button {...args} variant="gray" size="sm">
+        Button
+      </Button>
+    </div>
+  );
+};
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
@@ -27,3 +101,11 @@ Primary.args = {
   loading: false,
   disabled: false,
 };
+
+export const Basic = BasicTemplate.bind({});
+
+export const Secondary = SecondaryTemplate.bind({});
+
+export const Black = BlackTemplate.bind({});
+
+export const Gray = GrayTemplate.bind({});
