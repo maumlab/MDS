@@ -31,4 +31,6 @@ export { default as Tab } from "./Tab";
 
 export { default as Text } from "./Text";
 
+export { default as Textarea } from "./Textarea";
+
 export { default as WithLabel } from "./WithLabel";
