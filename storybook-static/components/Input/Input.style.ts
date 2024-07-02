@@ -1,12 +1,26 @@
 import styled from "@emotion/styled";
-import { themes } from "../../styles";
+import { css, themes } from "../../styles";
 
 export const BaseContainer = styled.div`
-  /* height: 72px; */
   display: flex;
   flex-direction: column;
   gap: ${themes.spacing.xxs}px;
   position: relative;
+`;
+
+// type이 number일 때 화살표 숨기기
+const hideArrowByNumeric = css`
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  &[input-mode="numeric"] {
+    -moz-appearance: textfield;
+  }
 `;
 
 export const BaseInput = styled.input`
@@ -46,6 +60,8 @@ export const BaseInput = styled.input`
   &[data-success="true"] {
     border-color: ${themes.colors.green};
   }
+
+  ${hideArrowByNumeric};
 `;
 
 export const Absolute = styled.div`

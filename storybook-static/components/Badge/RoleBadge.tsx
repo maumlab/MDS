@@ -18,7 +18,7 @@ const RoleBadge = forwardRef<ElementRef<"span">, RoleBadgeProps>(
     }
 
     return (
-      <BaseBadge data-variant="role" data-role={role} ref={ref}>
+      <BaseBadge $variant="role" data-role={role} ref={ref}>
         {label}
       </BaseBadge>
     );

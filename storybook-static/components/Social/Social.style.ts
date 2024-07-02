@@ -1,23 +1,29 @@
 import styled from "@emotion/styled";
-import { themes } from "../../styles";
+import { css, themes } from "../../styles";
+import { SocialType } from "./Social.type";
 
-export const BaseSocial = styled.button`
+export const BaseSocial = styled.button<{ $type: SocialType }>`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  &[data-type="primary"] {
-    width: 100%;
-    height: 60px;
-    ${themes.radius.md};
-    ${themes.typos.h6};
-    gap: ${themes.spacing.md}px;
-  }
-
-  &[data-type="secondary"] {
-    width: 60px;
-    height: 60px;
-    ${themes.radius.circle};
-    border: 1px solid ${themes.colors.gray9};
-  }
+  ${({ $type }) => {
+    switch ($type) {
+      case "primary":
+        return css`
+          width: 100%;
+          height: 60px;
+          ${themes.radius.md};
+          ${themes.typos.h6};
+          gap: ${themes.spacing.md}px;
+        `;
+      case "secondary":
+        return css`
+          width: 60px;
+          height: 60px;
+          ${themes.radius.circle};
+          border: 1px solid ${themes.colors.gray9};
+        `;
+    }
+  }}
 `;

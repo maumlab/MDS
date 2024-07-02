@@ -8,13 +8,13 @@ import {
 import Text from "../Text";
 
 const SegmentedControlProvider = createContext<SegmentedControlProviderProps>({
-  variant: "padded",
+  variant: "basic",
   selectedValue: "",
   onChange: () => null,
 });
 
 const SegmentedControl = ({
-  variant = "padded",
+  variant = "basic",
   selectedValue,
   onChange,
   children,
@@ -23,7 +23,7 @@ const SegmentedControl = ({
     <SegmentedControlProvider.Provider
       value={{ selectedValue, variant, onChange }}
     >
-      <BaseContainer data-variant={variant}>{children}</BaseContainer>
+      <BaseContainer $variant={variant}>{children}</BaseContainer>
     </SegmentedControlProvider.Provider>
   );
 };
@@ -37,7 +37,7 @@ SegmentedControl.Item = ({ children, value }: SegmentedControlItemProps) => {
   return (
     <ItemContainer
       data-active={active}
-      data-variant={variant}
+      $variant={variant}
       onClick={() => onChange(value)}
     >
       <Text color={active ? "blue" : "gray2"} typo="caption14Medium">

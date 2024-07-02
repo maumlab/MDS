@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import WithLabel from "../WithLabel";
@@ -19,45 +19,58 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Input> = (args) => {
-  const { register, formState } = useForm<{ input: string }>({});
-  const { isDirty } = formState;
+  return <Input {...args} />;
+};
+
+const WithLabelTemplate: ComponentStory<typeof WithLabel> = (args) => {
+  return (
+    <WithLabel label="Label">
+      <Input {...args} />
+    </WithLabel>
+  );
+};
+
+const MessageTemplate: ComponentStory<typeof Input> = (args) => {
+  const { register, handleSubmit, setError, errors, clearErrors } = useForm<{
+    input: string;
+  }>();
+  const { input: inputError } = errors;
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: themes.spacing.xl,
-      }}
-    >
-      <WithLabel label="제목">
-        <Input
-          {...args}
-          placeholder="내용을 입력해주세요."
-          ref={register}
-          name="input"
-          error={isDirty ? "에러 메세지" : undefined}
-        />
-      </WithLabel>
-      <WithLabel label="비밀번호">
-        <Input {...args} placeholder="내용을 입력해주세요." disabled />
-      </WithLabel>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Input
         {...args}
-        placeholder="내용을 입력해주세요."
-        disabled
-        value="내용을 입력해주세요."
+        ref={register}
+        name="input"
+        placeholder="숫자만 입력할 수 있습니다."
+        inputMode="numeric"
+        error={inputError?.message}
+        onChange={(e) => {
+          const numeric = /^\d+$/.test(e.target.value);
+          const newValue = e.target.value.replace(/\D/g, "");
+          if (!numeric) {
+            setError("input", {
+              message: "에러: 숫자만 입력할 수 있습니다.",
+            });
+          } else {
+            clearErrors("input");
+          }
+          e.target.value = newValue;
+        }}
       />
-      <Input {...args} placeholder="내용을 입력해주세요." error="에러 메세지" />
-      <Input
-        {...args}
-        placeholder="내용을 입력해주세요."
-        success="성공 메세지"
-      />
-    </div>
+    </form>
   );
 };
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  placeholder: "Placeholder",
+};
+
+export const WithLabelComponent = WithLabelTemplate.bind({});
+
+export const Message = MessageTemplate.bind({});

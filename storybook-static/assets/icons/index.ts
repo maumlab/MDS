@@ -10,3 +10,4 @@ export type IconProps = {
 } & React.SVGAttributes<SVGElement>;
 
 export * from "./export.generated";
+export { IconSize } from "./icon.type";

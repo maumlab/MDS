@@ -36,85 +36,46 @@ const Template: ComponentStory<typeof SegmentedControl> = (args) => {
   );
 };
 
-const SoftTemplate: ComponentStory<typeof SegmentedControl> = (args) => {
-  const [selectedValue1, setSelectedValue1] = useState("Item1");
-  const onChange1 = (value: string) => {
-    setSelectedValue1(value);
-  };
-
-  const [selectedValue2, setSelectedValue2] = useState("Item1");
-  const onChange2 = (value: string) => {
-    setSelectedValue2(value);
+const BasicTemplate: ComponentStory<typeof SegmentedControl> = (args) => {
+  const [selectedValue, setSelectedValue] = useState("Item1");
+  const onChange = (value: string) => {
+    setSelectedValue(value);
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      <SegmentedControl
-        {...args}
-        selectedValue={selectedValue1}
-        onChange={onChange1}
-      >
-        <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
-      </SegmentedControl>
-      <SegmentedControl
-        {...args}
-        selectedValue={selectedValue2}
-        onChange={onChange2}
-      >
-        <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item4">Item4</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item5">Item5</SegmentedControl.Item>
-      </SegmentedControl>
-    </div>
+    <SegmentedControl selectedValue={selectedValue} onChange={onChange}>
+      <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
+      <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
+      <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
+    </SegmentedControl>
   );
 };
 
 const OutlinedTemplate: ComponentStory<typeof SegmentedControl> = (args) => {
-  const [selectedValue1, setSelectedValue1] = useState("Item1");
-  const onChange1 = (value: string) => {
-    setSelectedValue1(value);
-  };
-
-  const [selectedValue2, setSelectedValue2] = useState("Item1");
-  const onChange2 = (value: string) => {
-    setSelectedValue2(value);
+  const [selectedValue, setSelectedValue] = useState("Item1");
+  const onChange = (value: string) => {
+    setSelectedValue(value);
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-      <SegmentedControl
-        {...args}
-        variant="contained"
-        selectedValue={selectedValue1}
-        onChange={onChange1}
-      >
-        <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
-      </SegmentedControl>
-      <SegmentedControl
-        {...args}
-        variant="contained"
-        selectedValue={selectedValue2}
-        onChange={onChange2}
-      >
-        <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item4">Item4</SegmentedControl.Item>
-        <SegmentedControl.Item value="Item5">Item5</SegmentedControl.Item>
-      </SegmentedControl>
-    </div>
+    <SegmentedControl
+      selectedValue={selectedValue}
+      onChange={onChange}
+      variant="outlined"
+    >
+      <SegmentedControl.Item value="Item1">Item1</SegmentedControl.Item>
+      <SegmentedControl.Item value="Item2">Item2</SegmentedControl.Item>
+      <SegmentedControl.Item value="Item3">Item3</SegmentedControl.Item>
+    </SegmentedControl>
   );
 };
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  variant: "basic",
+};
 
-export const Soft = SoftTemplate.bind({});
+export const Basic = BasicTemplate.bind({});
+
 export const Outlined = OutlinedTemplate.bind({});
