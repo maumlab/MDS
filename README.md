@@ -62,11 +62,11 @@ Metri Design System (<a src="https://667e5d0fb08b26f4789151f5-ejgfgxozos.chromat
 1. MDS를 사용하고자 하는 프로젝트 루트에 `.npmrc`를 작성한다.
 
    ```properties
-   @terablue:registry=https://npm.pkg.github.com/
+   @maumlab:registry=https://npm.pkg.github.com/
    ```
 
 2. MDS를 설치한다. (latest를 사용할 경우, 최신버전 다운로드)
 
    ```properties
-   npm install @terablue/mds@[latest | tag_version]
+   npm install @maumlab/mds@[latest | tag_version]
    ```
