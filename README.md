@@ -1,6 +1,6 @@
 # MDS
 
-Metri Design System (<a src="https://667e5d0fb08b26f4789151f5-ejgfgxozos.chromatic.com/?path=/docs/components-icon--docs">스토리북</a>)
+Metri Design System
 
 ## 프로젝트 키워드
 

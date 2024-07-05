@@ -19,6 +19,8 @@ export { default as Checkbox } from "./Checkbox";
 
 export { default as Input } from "./Input";
 
+export { default as Pagination, usePagination } from "./Pagination";
+
 export { default as Radio } from "./Radio";
 
 export { default as SegmentedControl } from "./SegmentedControl";
