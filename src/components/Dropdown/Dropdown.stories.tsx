@@ -138,16 +138,22 @@ const MultipleTemplate: ComponentStory<typeof Dropdown> = (args) => {
 };
 
 const CustomTriggerTemplate: ComponentStory<typeof Dropdown> = (args) => {
-  const { register } = useForm();
-
-  const [selectedValue, setSelectedValue] = useState<undefined | string>();
+  const { register, setValue, watch } = useForm<{
+    input: string;
+  }>();
+  const { input } = watch();
   const options = ["A", "AS", "B", "C"];
 
   return (
-    <Dropdown {...args} onChange={(e, newValue) => setSelectedValue(newValue)}>
+    <Dropdown
+      {...args}
+      onChange={(e, newValue) => {
+        setValue("input", newValue);
+      }}
+    >
       <Dropdown.Trigger>
         <div style={{ width: 200 }}>
-          <Input ref={register} />
+          <Input ref={register} name="input" />
         </div>
       </Dropdown.Trigger>
       <Dropdown.OptionList>
@@ -164,7 +170,7 @@ const CustomTriggerTemplate: ComponentStory<typeof Dropdown> = (args) => {
                 </span>
               </span>
             }
-            selected={value === selectedValue}
+            selected={value === input}
             disabled={value === options[2]}
             key={value}
           />

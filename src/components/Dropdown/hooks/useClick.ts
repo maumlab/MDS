@@ -23,8 +23,9 @@ const useClick = <T extends string>({
       const optionIsTarget =
         optionListElement && optionListElement.contains(target);
       const targetIsInputControl = target.tagName === "INPUT";
+      const checkboxIsTarget = target.getAttribute("type") === "checkbox";
 
-      if (targetIsInputControl && expanded) {
+      if (targetIsInputControl && !checkboxIsTarget && expanded) {
         return;
       } else if (!triggerIsTarget && !optionIsTarget) {
         close();
