@@ -18,9 +18,13 @@ const Template: ComponentStory<typeof Checkbox> = (args) => {
   return (
     <div>
       <Checkbox {...args} />
-      <Checkbox {...args} label="Text" />
-      <Checkbox {...args} label="Text" disabled />
-      <Checkbox {...args} label="Text" disabled checked />
+      <Checkbox {...args}>Text</Checkbox>
+      <Checkbox {...args} disabled>
+        Text
+      </Checkbox>
+      <Checkbox {...args} disabled checked>
+        Text
+      </Checkbox>
     </div>
   );
 };

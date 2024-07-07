@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
 
 export type CheckboxProps = {
-  label?: string;
+  children: React.ReactNode;
 } & Omit<ComponentPropsWithoutRef<"input">, "type">;
