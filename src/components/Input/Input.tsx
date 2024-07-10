@@ -5,7 +5,7 @@ import AlertMessage from "../AlertMessage";
 
 const Input = forwardRef(
   (
-    { success, error, ...props }: InputProps,
+    { variant = "metri", success, error, ...props }: InputProps,
     ref: ComponentPropsWithRef<"input">["ref"]
   ) => {
     return (
@@ -15,6 +15,7 @@ const Input = forwardRef(
           {...props}
           data-error={!!error}
           data-success={!!success}
+          $variant={variant}
         />
         <Absolute>
           {error && <AlertMessage type="error" message={error} />}
