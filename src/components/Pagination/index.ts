@@ -3,3 +3,4 @@ import usePagination from "./hooks/usePagination";
 
 export default Pagination;
 export { usePagination };
+export type { PaginationVariant, PaginationType } from "./Pagination.type";

@@ -6,3 +6,4 @@ import SearchBadge from "./SearchBadge";
 
 export { Badge, StatusBadge, RoleBadge, LevelBadge, SearchBadge };
 export { BadgeStatus, BadgeRole, BadgeSearch } from "./Badge.type";
+export type { BadgeVariant, BadgeLevel } from "./Badge.type";

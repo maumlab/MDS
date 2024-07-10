@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef } from "react";
 
-type SocialVariant = "KAKAO" | "NAVER" | "APPLE" | "METRI";
+export type SocialVariant = "KAKAO" | "NAVER" | "APPLE" | "METRI";
 export type SocialType = "primary" | "secondary";
 
 export type SocialProps = {

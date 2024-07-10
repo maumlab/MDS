@@ -1,7 +1,7 @@
 import { IconSize } from "../../assets/icons/icon.type";
 import { TypoType } from "../../styles";
 
-type AlertMessageType = "error" | "success";
+export type AlertMessageType = "error" | "success";
 
 export type AlertMessageProps = {
   type: AlertMessageType;
