@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
-import { css, themes } from "../../styles";
+import { themes } from "../../styles";
+import { InputVariant } from "./Input.type";
 
 export const BaseContainer = styled.div`
   display: flex;
@@ -8,22 +9,7 @@ export const BaseContainer = styled.div`
   position: relative;
 `;
 
-// type이 number일 때 화살표 숨기기
-const hideArrowByNumeric = css`
-  /* Chrome, Safari, Edge, Opera */
-  &::-webkit-outer-spin-button,
-  &::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-
-  /* Firefox */
-  &[input-mode="numeric"] {
-    -moz-appearance: textfield;
-  }
-`;
-
-export const BaseInput = styled.input`
+export const BaseInput = styled.input<{ $variant: InputVariant }>`
   appearance: none;
   outline: none;
 
@@ -41,7 +27,8 @@ export const BaseInput = styled.input`
   padding-left: 15px;
 
   &:focus {
-    border-color: ${themes.colors.blue};
+    border-color: ${({ $variant }) =>
+      $variant === "metri" ? themes.colors.blue : themes.colors.emrBlue1};
   }
 
   &::placeholder {
@@ -60,8 +47,6 @@ export const BaseInput = styled.input`
   &[data-success="true"] {
     border-color: ${themes.colors.green};
   }
-
-  ${hideArrowByNumeric};
 `;
 
 export const Absolute = styled.div`

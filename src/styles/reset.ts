@@ -1,4 +1,5 @@
 import { css } from "@emotion/react";
+import { hideArrowByNumeric } from "./input";
 
 const reset = css`
   @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Noto+Sans:ital,wght@1,600&display=swap");
@@ -156,6 +157,8 @@ const reset = css`
   * {
     box-sizing: border-box;
   }
+
+  ${hideArrowByNumeric}
 `;
 
 export default reset;
