@@ -26,7 +26,7 @@ export type TextProps = PolymorphicElementProps<TextAsType> & {
   lineHeight?: number;
 
   // ellipsis
-  trucate?: number;
+  truncate?: number;
   wordBreak?: WordBreakType;
 
   // text-align 속성

@@ -4,18 +4,18 @@ import { themes, TypoType } from "../../styles";
 
 export const BaseText = styled.span<{
   $typo: TypoType;
-  $trucate: number;
+  $truncate?: number;
 }>`
   ${({ $typo }) => themes.typos[$typo]}
 
-  ${({ $trucate }) =>
-    $trucate &&
+  ${({ $truncate }) =>
+    $truncate &&
     css`
       overflow: hidden;
       text-overflow: ellipsis;
 
       display: -webkit-box;
-      -webkit-line-clamp: ${$trucate};
+      -webkit-line-clamp: ${$truncate};
       -webkit-box-orient: vertical;
     `}
 `;

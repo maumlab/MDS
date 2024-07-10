@@ -11,7 +11,7 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
       typo = "b4",
       color = "gray1",
       lineHeight,
-      trucate = 1,
+      truncate,
       wordBreak = "keep-all",
       align = "left",
       ...props
@@ -31,7 +31,7 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
           lineHeight: lineHeight ? `${lineHeight}px` : "normal",
         }}
         $typo={typo}
-        $trucate={trucate}
+        $truncate={truncate}
       >
         {children}
       </BaseText>
