@@ -4,7 +4,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import WithLabel from "../WithLabel";
 import Input from "./Input";
 import { useForm } from "react-hook-form/dist/index.ie11";
-import { themes } from "../../styles";
+import LineInput from "./LineInput";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -65,6 +65,18 @@ const MessageTemplate: ComponentStory<typeof Input> = (args) => {
   );
 };
 
+const LineInputTemplate: ComponentStory<typeof LineInput> = (args) => {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+      <LineInput {...args} />
+      <LineInput {...args} placeholder="Placeholder" />
+      <LineInput {...args} error="내용을 다시 확인해주세요." />
+      <LineInput {...args} success="올바른 값입니다." />
+      <LineInput {...args} disabled value="내용을 입력해주세요." />
+    </div>
+  );
+};
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
@@ -75,3 +87,5 @@ Primary.args = {
 export const WithLabelComponent = WithLabelTemplate.bind({});
 
 export const Message = MessageTemplate.bind({});
+
+export const Line = LineInputTemplate.bind({});

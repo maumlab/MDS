@@ -24,7 +24,7 @@ export type * from "./Checkbox";
 
 export { default as Dropdown } from "./Dropdown";
 
-export { default as Input } from "./Input";
+export { Input, LineInput } from "./Input";
 export type * from "./Input";
 
 export { default as Pagination, usePagination } from "./Pagination";

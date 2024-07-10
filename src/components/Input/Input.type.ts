@@ -7,3 +7,8 @@ export type InputProps = {
   error?: string;
   success?: string;
 } & ComponentPropsWithoutRef<"input">;
+
+export type LineInputProps = {
+  error?: string;
+  success?: string;
+} & ComponentPropsWithoutRef<"input">;
