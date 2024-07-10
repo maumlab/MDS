@@ -49,13 +49,15 @@ Metri Design System
 
 ### icongen 사용 방법
 
-1. `/public/assets/icons` 폴더 하위에 아이콘 파일을 추가한다. (폴더 추가도 가능)
+1. `/src/assets/icons/svgs` 폴더 하위에 아이콘 파일을 추가한다. (폴더 추가 불가)
 
-2. 아래 코드를 실행하면 `/src/common/icons.ts` 파일에 추가한 아이콘이 적용된다.
+2. 아래 코드를 실행하면 `/src/assets/icons/generated` 파일에 추가한 아이콘이 적용된다.
 
    ```properties
-   npm run icongen
+   npm run icon
    ```
+
+3. `src/assets/icons/export.generated.ts`에 추가된 아이콘을 사용한다.
 
 ## MDS 사용 방법
 
