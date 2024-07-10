@@ -20,6 +20,7 @@ export { default as Button } from "./Button";
 export type * from "./Button";
 
 export { default as Checkbox } from "./Checkbox";
+export type * from "./Checkbox";
 
 export { default as Dropdown } from "./Dropdown";
 

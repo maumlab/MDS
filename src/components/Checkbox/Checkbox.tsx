@@ -4,11 +4,11 @@ import { CheckboxProps } from "./Checkbox.type";
 
 const Checkbox = forwardRef(
   (
-    { children, ...props }: CheckboxProps,
+    { variant = "basic", color = "gray3", children, ...props }: CheckboxProps,
     ref: ComponentPropsWithRef<"input">["ref"]
   ) => {
     return (
-      <BaseCheckbox>
+      <BaseCheckbox $variant={variant} $color={color}>
         <BaseCheckboxInput type="checkbox" ref={ref} {...props} />
         {children}
       </BaseCheckbox>

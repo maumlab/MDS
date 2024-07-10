@@ -1,14 +1,39 @@
 import styled from "@emotion/styled";
-import { themes } from "../../styles";
+import { ColorType, css, themes } from "../../styles";
+import { CheckboxVariant } from "./Checkbox.type";
+import { hexToRgba } from "../../lib";
 
-export const BaseCheckbox = styled.label`
+export const BaseCheckbox = styled.label<{
+  $variant: CheckboxVariant;
+  $color: ColorType;
+}>`
   display: inline-flex;
   align-items: center;
   gap: ${themes.spacing.md}px;
   ${themes.typos.b4}
-  color: ${themes.colors.gray3};
+  color: ${({ $color }) => themes.colors[$color]};
 
   cursor: pointer;
+
+  ${({ $variant }) =>
+    $variant === "region" &&
+    css`
+      padding: 12px;
+      ${themes.radius.md};
+
+      &:has(input[type="checkbox"]:checked) {
+        background-color: ${themes.colors.blueLight3};
+
+        color: ${themes.colors.blue};
+        ${themes.typos.h6};
+      }
+
+      &:has(input[type="checkbox"]:disabled) {
+        background-color: ${themes.colors.gray7};
+        color: ${hexToRgba(themes.colors.gray3, 30)};
+        opacity: 1 !important;
+      }
+    `}
 
   &:has(input[type="checkbox"]:disabled) {
     opacity: 0.3;
