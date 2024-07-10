@@ -4,7 +4,6 @@ import { themes } from "../../styles";
 export const BaseLabel = styled.label`
   display: flex;
   flex-direction: column;
-  gap: 2px;
 
   &[data-required="true"] {
     & > span:after {
