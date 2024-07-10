@@ -47,7 +47,7 @@ Metri Design System
    v[major].[minor].[patch]
    ```
 
-### icongen 사용 방법
+### icon 사용 방법
 
 1. `/src/assets/icons/svgs` 폴더 하위에 아이콘 파일을 추가한다. (폴더 추가 불가)
 
@@ -58,6 +58,26 @@ Metri Design System
    ```
 
 3. `src/assets/icons/export.generated.ts`에 추가된 아이콘을 사용한다.
+
+### component 생성 방법
+
+1. `npm run component [ComponentName]`을 터미널에 입력한다.
+
+   ```properties
+   npm run component [ComponentName]
+   ```
+
+2. 아래 파일 5개가 만들어진다.
+
+   ```properties
+      index.ts
+      [ComponentName].tsx
+      [ComponentName].style.ts
+      [ComponentName].type.ts
+      [ComponentName].stories.tsx
+   ```
+
+3. src의 배럴 파일에 export 할 파일을 추가한다. 단, 배럴 파일에는 `/src/components`에 있는 폴더 순서대로 추가한다.
 
 ## MDS 사용 방법
 
