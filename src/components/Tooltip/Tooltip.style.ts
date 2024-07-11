@@ -18,13 +18,6 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
   ${themes.typos.caption14Medium}
   ${themes.shadow.md}
 
-  &::before {
-    content: "";
-    position: absolute;
-    border: 6px solid transparent;
-    border-top: none;
-  }
-
   ${({ $color }) => {
     switch ($color) {
       case "black":
@@ -32,8 +25,8 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
         return css`
           color: ${themes.colors.white};
           background-color: ${blackColor};
-          &::before {
-            border-bottom-color: ${blackColor};
+          & > div.tri::before {
+            background-color: ${blackColor};
           }
         `;
       case "white":
@@ -41,8 +34,8 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
         return css`
           color: ${themes.colors.gray1};
           background-color: ${whiteColor};
-          &::before {
-            border-bottom-color: ${whiteColor};
+          & > div.tri::before {
+            background-color: ${whiteColor};
           }
         `;
     }
@@ -52,19 +45,19 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
     switch ($triPosition) {
       case "left":
         return css`
-          &::before {
-            left: 16px;
+          & > div.tri {
+            left: 7px;
           }
         `;
       case "right":
         return css`
-          &::before {
-            right: 16px;
+          & > div.tri {
+            right: 7px;
           }
         `;
       case "center":
         return css`
-          &::before {
+          & > div.tri {
             left: 50%;
             translate: -50% 0;
           }
@@ -77,39 +70,70 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
       case "top":
         return css`
           margin-top: 6px;
-          &::before {
+          & > div.tri {
             bottom: 100%;
+            &::before {
+              box-shadow: 2.8px 2.8px 8px 0px rgba(0, 0, 0, 0.2);
+            }
           }
         `;
       case "bottom":
         return css`
           margin-bottom: 6px;
-          &::before {
+          & > div.tri {
             top: 100%;
             rotate: 180deg;
+            &::before {
+              box-shadow: -2.8px -2.8px 8px 0px rgba(0, 0, 0, 0.2);
+            }
           }
         `;
       case "left":
         return css`
           margin-left: 6px;
-          &::before {
+          & > div.tri {
             top: 50%;
             left: unset;
             right: 100%;
-            translate: 25% -50%;
-            rotate: 270deg;
+            translate: 8px -50%;
+            rotate: -90deg;
+            &::before {
+              box-shadow: -2.8px 2.8px 8px 0px rgba(0, 0, 0, 0.2);
+            }
           }
         `;
       case "right":
         return css`
           margin-right: 6px;
-          &::before {
+          & > div.tri {
             top: 50%;
             left: 100%;
-            translate: -25% -50%;
+            translate: -8px -50%;
             rotate: 90deg;
+            &::before {
+              box-shadow: 2.8px -2.8px 8px 0px rgba(0, 0, 0, 0.2);
+            }
           }
         `;
     }
   }}
+`;
+
+export const Tri = styled.div`
+  position: absolute;
+  width: 30px;
+  height: 14px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 8.49px;
+    height: 8.49px;
+    rotate: 45deg;
+
+    top: 8px;
+    left: 50%;
+    translate: -50% 25%;
+  }
 `;

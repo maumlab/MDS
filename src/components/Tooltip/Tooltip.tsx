@@ -1,4 +1,4 @@
-import { TooltipWrapper, Wrapper } from "./Tooltip.style";
+import { TooltipWrapper, Tri, Wrapper } from "./Tooltip.style";
 import { TooltipProps } from "./Tooltip.type";
 
 const Tooltip = ({
@@ -17,6 +17,7 @@ TooltipProps) => {
       {children}
       <TooltipWrapper role="tooltip" $position={position} $triPosition={triPosition} $color={color}>
         {content}
+        <Tri className="tri" />
       </TooltipWrapper>
     </Wrapper>
   );
