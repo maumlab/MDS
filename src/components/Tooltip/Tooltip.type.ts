@@ -13,10 +13,15 @@ export type TooltipStyleProps = {
 };
 
 export type TooltipProps = Partial<TooltipStyleProps> & {
-  children: React.ReactNode;
+  children: React.ReactElement;
+  content: React.ReactNode;
+  disabled?: boolean;
+};
+
+export type UseTooltipPositionProps = {
   container: Element | null;
   triggerRef: React.RefObject<HTMLElement> | null;
   tooltipRef: React.RefObject<HTMLDivElement> | null;
-  content: React.ReactNode;
-  disabled?: boolean;
+  position: TooltipPosition;
+  triPosition: TooltipTriPosition;
 };
