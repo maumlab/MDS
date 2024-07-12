@@ -3,7 +3,6 @@ import { TooltipWrapper, Tri, Wrapper } from "./Tooltip.style";
 import { TooltipProps } from "./Tooltip.type";
 import { generateUniqueId } from "../../lib";
 import { Portal } from "../../utils";
-import React from "react";
 import useTooltipPosition from "./hooks/useTooltipPosition";
 
 const Tooltip = ({
@@ -15,7 +14,7 @@ const Tooltip = ({
   disabled = false,
 }: TooltipProps) => {
   // refs
-  const triggerRef = useRef<HTMLElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
 
   // tooltip portal
@@ -40,11 +39,8 @@ const Tooltip = ({
   useTooltipPosition({ container, triggerRef, tooltipRef, position, triPosition });
 
   return (
-    <Wrapper onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={close}>
-      {React.cloneElement(children, {
-        ...children.props,
-        ref: triggerRef,
-      })}
+    <Wrapper ref={triggerRef} onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={close}>
+      {children}
       <Portal container={container}>
         <TooltipWrapper role="tooltip" ref={tooltipRef} $position={position} $triPosition={triPosition} $color={color}>
           {content}
