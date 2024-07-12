@@ -18,9 +18,7 @@ const FadeOut = keyframes`
   to { opacity: 0; }
 `;
 export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
-  &[data-visible="true"] {
-    animation: ${FadeIn} 0.4s ease-out;
-  }
+  animation: ${FadeIn} 0.4s ease-out;
   &[data-visible="false"] {
     animation: ${FadeOut} 0.4s ease-out;
   }
