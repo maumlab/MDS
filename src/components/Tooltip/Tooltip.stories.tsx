@@ -9,7 +9,7 @@ export default {
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
-    componentSubtitle: "사용자에게 도움을 줄 수 있는 정보를 노출 시킵니다. hover, focus, click 등의 액션을 이용합니다.",
+    componentSubtitle: "사용자에게 도움을 줄 수 있는 정보를 노출 시킵니다. hover, focus 등의 액션을 이용합니다.",
   },
   args: {
     content: "툴팁의 내용입니다.",
