@@ -22,7 +22,9 @@ const useTooltipPosition = ({ container, triggerRef, tooltipRef, position, triPo
         }px`;
         break;
       case "right":
-        tooltipElement.style.left = `${windowScrollX + triggerBoundingRect.right - tooltipElement.offsetWidth + 10}px`;
+        tooltipElement.style.left = `${
+          windowScrollX + triggerBoundingRect.left + triggerElement.offsetWidth / 2 - tooltipElement.offsetWidth + 22
+        }px`;
         break;
       case "center":
         tooltipElement.style.left = `${
