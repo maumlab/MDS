@@ -1,6 +1,5 @@
 import { ComponentPropsWithRef } from "react";
 
-export type DefaultDropdownValue = string;
 export type DropdownChangeEvent = MouseEvent | KeyboardEvent;
 
 /**
@@ -10,7 +9,7 @@ export type DropdownChangeEvent = MouseEvent | KeyboardEvent;
  */
 export type DropdownOptionVariantType = "default" | "ellipsis" | "multiple";
 
-export type DropdownProviderProps<T extends string = DefaultDropdownValue> = {
+export type DropdownProviderProps<T = string> = {
   container: Element | null;
   triggerRef: React.RefObject<HTMLElement> | null;
   optionListRef: React.RefObject<HTMLUListElement> | null;
@@ -24,7 +23,7 @@ export type DropdownProviderProps<T extends string = DefaultDropdownValue> = {
   optionVariant: DropdownOptionVariantType;
 };
 
-export interface DropdownProps<T extends string = DefaultDropdownValue> {
+export interface DropdownProps<T = string> {
   onChange: DropdownProviderProps<T>["onChange"];
   disabled?: boolean;
   multiple?: boolean;
@@ -37,12 +36,11 @@ export type UseOptionListPositionProps = Pick<
   "container" | "triggerRef" | "optionListRef" | "optionVariant"
 >;
 
-export type DropdownBarProps<T extends string = DefaultDropdownValue> =
-  ComponentPropsWithRef<"div"> & {
-    value?: T;
-    placeholder?: string;
-    disabled?: boolean;
-  };
+export type DropdownBarProps<T = string> = ComponentPropsWithRef<"div"> & {
+  value?: T;
+  placeholder?: string;
+  disabled?: boolean;
+};
 
 export type DropdownOptionListProps = ComponentPropsWithRef<"ul"> & {
   zIndex?: number;
@@ -50,22 +48,14 @@ export type DropdownOptionListProps = ComponentPropsWithRef<"ul"> & {
   children: React.ReactNode;
 };
 
-export type DropdownOptionProps<T extends string = DefaultDropdownValue> =
-  ComponentPropsWithRef<"li"> & {
-    value: T;
-    label?: T | React.ReactElement;
-    selected?: boolean;
-    disabled?: boolean;
-  };
+export type DropdownOptionProps<T = string> = ComponentPropsWithRef<"li"> & {
+  value: T;
+  label?: T | React.ReactElement;
+  selected?: boolean;
+  disabled?: boolean;
+};
 
-export type DropdownEventParamsProps<T extends string> = Pick<
+export type DropdownEventParamsProps<T = string> = Pick<
   DropdownProviderProps<T>,
-  | "triggerRef"
-  | "optionListRef"
-  | "expanded"
-  | "close"
-  | "toggle"
-  | "onChange"
-  | "disabled"
-  | "multiple"
+  "triggerRef" | "optionListRef" | "expanded" | "close" | "toggle" | "onChange" | "disabled" | "multiple"
 >;
