@@ -58,21 +58,21 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
     switch ($triPosition) {
       case "left":
         return css`
-          & > div.tri {
-            left: 7px;
+          & > div.tri::before {
+            left: 16px;
           }
         `;
       case "right":
         return css`
-          & > div.tri {
-            right: 7px;
+          & > div.tri::before {
+            right: 16px;
           }
         `;
       case "center":
         return css`
-          & > div.tri {
+          & > div.tri::before {
             left: 50%;
-            translate: -50% 0;
+            translate: -50% 25%;
           }
         `;
     }
@@ -84,6 +84,8 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
         return css`
           margin-top: 6px;
           & > div.tri {
+            left: 0;
+            right: 0;
             bottom: 100%;
             &::before {
               box-shadow: 2.8px 2.8px 8px 0px rgba(0, 0, 0, 0.2);
@@ -95,9 +97,11 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
           margin-bottom: 6px;
           & > div.tri {
             top: 100%;
-            rotate: 180deg;
+            left: 0;
+            right: 0;
             &::before {
-              box-shadow: -2.8px -2.8px 8px 0px rgba(0, 0, 0, 0.2);
+              top: unset;
+              bottom: 12px;
             }
           }
         `;
@@ -105,13 +109,16 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
         return css`
           margin-left: 6px;
           & > div.tri {
-            top: 50%;
-            left: unset;
+            width: 14px;
+            height: auto;
+            top: 0;
+            bottom: 0;
             right: 100%;
-            translate: 8px -50%;
-            rotate: -90deg;
             &::before {
-              box-shadow: -2.8px 2.8px 8px 0px rgba(0, 0, 0, 0.2);
+              top: 50%;
+              left: 10px;
+              right: unset;
+              translate: 0 -50%;
             }
           }
         `;
@@ -119,12 +126,16 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
         return css`
           margin-right: 6px;
           & > div.tri {
-            top: 50%;
+            width: 14px;
+            height: auto;
+            top: 0;
+            bottom: 0;
             left: 100%;
-            translate: -8px -50%;
-            rotate: 90deg;
             &::before {
-              box-shadow: 2.8px -2.8px 8px 0px rgba(0, 0, 0, 0.2);
+              top: 50%;
+              right: 10px;
+              left: unset;
+              translate: 0 -50%;
             }
           }
         `;
@@ -134,7 +145,6 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
 
 export const Tri = styled.div`
   position: absolute;
-  width: 30px;
   height: 14px;
   overflow: hidden;
 
@@ -146,7 +156,7 @@ export const Tri = styled.div`
     rotate: 45deg;
 
     top: 8px;
-    left: 50%;
-    translate: -50% 25%;
+    translate: 0 25%;
+    box-shadow: 2.8px 2.8px 8px 0px rgba(0, 0, 0, 0.2);
   }
 `;
