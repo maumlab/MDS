@@ -19,6 +19,7 @@ const Tooltip = ({
 
   // tooltip portal
   const [container, setContainer] = useState<Element | null>(null);
+  const [visible, setVisible] = useState<boolean>(false);
   const uniqueId = useMemo(() => generateUniqueId(), []);
 
   // open/close
@@ -28,11 +29,16 @@ const Tooltip = ({
     newContainer.id = uniqueId;
     document.body.appendChild(newContainer);
     setContainer(newContainer);
+    setVisible(true);
   };
   const close = () => {
     const container = document.getElementById(uniqueId);
-    container?.remove();
-    setContainer(null);
+    if (!container) return;
+    setVisible(false);
+    setTimeout(() => {
+      container.remove();
+      setContainer(null);
+    }, 400);
   };
 
   // tooltip의 위치를 정하는 로직
@@ -42,7 +48,13 @@ const Tooltip = ({
     <Wrapper ref={triggerRef} onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={close}>
       {children}
       <Portal container={container}>
-        <TooltipWrapper role="tooltip" ref={tooltipRef} $position={position} $triPosition={triPosition} $color={color}>
+        <TooltipWrapper
+          role="tooltip"
+          ref={tooltipRef}
+          $position={position}
+          $triPosition={triPosition}
+          $color={color}
+          data-visible={visible}>
           {content}
           <Tri className="tri" />
         </TooltipWrapper>

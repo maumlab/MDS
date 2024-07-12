@@ -1,14 +1,28 @@
 import styled from "@emotion/styled";
 import { TooltipStyleProps } from "./Tooltip.type";
 import { AddDollarSign, hexToRgba } from "../../lib";
-import { css } from "@emotion/react";
+import { css, keyframes } from "@emotion/react";
 import { themes } from "../../styles";
 
 export const Wrapper = styled.div`
   position: relative;
 `;
 
+const FadeIn = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`;
+const FadeOut = keyframes`
+  from { opacity: 1; }
+  to { opacity: 0; }
+`;
 export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
+  &[data-visible="true"] {
+    animation: ${FadeIn} 0.4s ease-out;
+  }
+  &[data-visible="false"] {
+    animation: ${FadeOut} 0.4s ease-out;
+  }
   position: absolute;
   width: max-content;
   white-space: pre-wrap;
