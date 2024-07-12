@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { TooltipStyleProps } from "./Tooltip.type";
-import { AddDollarSign, hexToRgba } from "../../lib";
+import { AddDollarSign } from "../../types";
+import { hexToRgba } from "../../lib";
 import { css, keyframes } from "@emotion/react";
 import { themes } from "../../styles";
 
