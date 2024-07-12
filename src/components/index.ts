@@ -4,16 +4,7 @@ export type * from "./AlertMessage";
 export { default as Avatar, AvatarSize } from "./Avatar";
 export type * from "./Avatar";
 
-export {
-  Badge,
-  StatusBadge,
-  RoleBadge,
-  LevelBadge,
-  SearchBadge,
-  BadgeStatus,
-  BadgeRole,
-  BadgeSearch,
-} from "./Badge";
+export { Badge, StatusBadge, RoleBadge, LevelBadge, SearchBadge, BadgeStatus, BadgeRole, BadgeSearch } from "./Badge";
 export type * from "./Badge";
 
 export { default as Button } from "./Button";
@@ -45,5 +36,8 @@ export { default as Text } from "./Text";
 export type * from "./Text";
 
 export { default as Textarea } from "./Textarea";
+
+export { default as Tooltip } from "./Tooltip";
+export type * from "./Tooltip";
 
 export { default as WithLabel } from "./WithLabel";
