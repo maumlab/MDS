@@ -139,6 +139,14 @@ const TyposTemplate: ComponentStory<typeof Text> = (args) => {
   );
 };
 
+const WhiteSpaceTemplate: ComponentStory<typeof Text> = (args) => {
+  return (
+    <Text {...args}>
+      {`Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.`}
+    </Text>
+  );
+};
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
@@ -148,6 +156,10 @@ Primary.args = {
 };
 
 export const Typos = TyposTemplate.bind({});
+
+export const WhiteSpace = WhiteSpaceTemplate.bind({
+  whiteSpace: "normal",
+});
 
 const Container = styled.div`
   display: flex;
