@@ -111,7 +111,7 @@ const TextItem = ({ typo }: { typo: TypoType }) => {
 
   return (
     <Wrapper>
-      <div>
+      <div style={{ display: "flex", flexDirection: "column" }}>
         <Text>{typo}</Text>
         <Text>
           {size}px, {weight}
