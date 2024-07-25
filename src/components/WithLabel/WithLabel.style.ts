@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { themes } from "../../styles";
 
-export const BaseLabel = styled.label`
+export const BaseLabel = styled.div`
   display: flex;
   flex-direction: column;
 
   &[data-required="true"] {
-    & > span:after {
+    & > label:after {
       content: "";
       position: relative;
       display: inline-block;
