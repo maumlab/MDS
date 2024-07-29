@@ -14,6 +14,7 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
       truncate,
       wordBreak = "keep-all",
       align = "left",
+      whiteSpace = "normal",
       ...props
     }: TextProps,
     ref
@@ -29,6 +30,7 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
           wordBreak,
           color: themes.colors[color],
           lineHeight: lineHeight ? `${lineHeight}px` : "normal",
+          whiteSpace,
         }}
         $typo={typo}
         $truncate={truncate}

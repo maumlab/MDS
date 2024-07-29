@@ -20,6 +20,13 @@ export type WordBreakType = "normal" | "break-all" | "keep-all";
 
 export type TextAlignType = "left" | "center" | "right";
 
+export type WhiteSpaceType =
+  | "normal"
+  | "nowrap"
+  | "pre"
+  | "pre-line"
+  | "pre-wrap";
+
 export type TextProps = PolymorphicElementProps<TextAsType> & {
   color?: ColorType;
   typo?: TypoType;
@@ -31,4 +38,7 @@ export type TextProps = PolymorphicElementProps<TextAsType> & {
 
   // text-align 속성
   align?: TextAlignType;
+
+  // white-space 속성
+  whiteSpace?: WhiteSpaceType;
 };
