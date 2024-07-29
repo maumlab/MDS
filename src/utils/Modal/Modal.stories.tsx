@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Modal from "./Modal";
 import { Button } from "../../components";
-import { useToggle } from "../../hooks";
+import { BasicModal, BasicModalProps, ModalProvider, useModal } from "../Modal";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -13,14 +13,39 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Modal> = (args) => {
-  const { isOpen, onOpen, onClose } = useToggle();
+  const { onOpen, onClose } = useModal();
 
-  return (
-    <>
-      <Button onClick={onOpen}>오픈</Button>
-      <Modal {...args} isOpen={isOpen} onClose={onClose} />
-    </>
-  );
+  const onClick = () => {
+    onOpen<BasicModalProps>({
+      key: "basic",
+      Component: BasicModal,
+      props: {
+        onClose: () => onClose("basic"),
+        title: "베이직 모달",
+        children: (
+          <div>
+            <Button
+              onClick={() => {
+                onOpen<BasicModalProps>({
+                  key: "basic2",
+                  Component: BasicModal,
+                  props: {
+                    title: "베베이직 모달",
+                    onClose: () => onClose("basic2"),
+                    children: <div>베베이직 모달</div>,
+                  },
+                });
+              }}
+            >
+              베베이직 모달 오픈
+            </Button>
+          </div>
+        ),
+      },
+    });
+  };
+
+  return <Button onClick={onClick}>베이직 오픈</Button>;
 };
 
 export const Primary = Template.bind({});

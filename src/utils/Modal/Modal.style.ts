@@ -34,11 +34,12 @@ export const ModalWrapper = styled.div<Pick<ModalProps, "zIndex">>`
   > .background {
     width: 100%;
     height: 100%;
-    &.mask {
-      background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+    // 애니메이션 필요 시 추가
+    /* &.mask {
       animation: ${opacityIn} 200ms ease-in;
       animation-fill-mode: forwards;
-    }
+    } */
   }
 
   > .content {
@@ -47,10 +48,11 @@ export const ModalWrapper = styled.div<Pick<ModalProps, "zIndex">>`
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 100vw;
-    > div,
+    // 애니메이션 필요 시 추가
+    /* > div,
     > section {
       animation: ${slideIn} 200ms ease-in;
       animation-fill-mode: forwards;
-    }
+    } */
   }
 `;
