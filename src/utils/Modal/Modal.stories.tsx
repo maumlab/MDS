@@ -3,7 +3,13 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Modal from "./Modal";
 import { Button } from "../../components";
-import { BasicModal, BasicModalProps, ModalProvider, useModal } from "../Modal";
+import {
+  AlertModal,
+  AlertModalProps,
+  BasicModal,
+  BasicModalProps,
+  useModal,
+} from "../Modal";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -16,31 +22,24 @@ const Template: ComponentStory<typeof Modal> = (args) => {
   const { onOpen, onClose } = useModal();
 
   const onClick = () => {
-    onOpen<BasicModalProps>({
-      key: "basic",
-      Component: BasicModal,
+    onOpen<AlertModalProps>({
+      key: "alert",
+      Component: AlertModal,
       props: {
-        onClose: () => onClose("basic"),
-        title: "베이직 모달",
-        children: (
-          <div>
-            <Button
-              onClick={() => {
-                onOpen<BasicModalProps>({
-                  key: "basic2",
-                  Component: BasicModal,
-                  props: {
-                    title: "베베이직 모달",
-                    onClose: () => onClose("basic2"),
-                    children: <div>베베이직 모달</div>,
-                  },
-                });
-              }}
-            >
-              베베이직 모달 오픈
-            </Button>
-          </div>
-        ),
+        onClose: () => onClose("alert"),
+        title: "엘럿 모달\n두 줄",
+        buttonLabel: "베이직 모달 오픈",
+        onConfirm: () => {
+          onOpen<BasicModalProps>({
+            key: "basic",
+            Component: BasicModal,
+            props: {
+              title: "베이직 모달",
+              onClose: () => onClose("basic"),
+            },
+          });
+        },
+        children: <div>엘럿 모달입니다</div>,
       },
     });
   };

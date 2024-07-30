@@ -1,16 +1,11 @@
 import { createContext, useEffect, useState } from "react";
+import { ModalType } from "./Modal.type";
 
 export const ModalContext = createContext<{
   onOpen: <T>(modal: ModalType<T>) => void;
   onClose: (key: string) => void;
   onClear: () => void;
 } | null>(null);
-
-type ModalType<T> = {
-  key: string; // unique
-  Component: React.FC<T>;
-  props: T;
-};
 
 const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   const [modals, setModals] = useState<ModalType<any>[]>([]);
@@ -27,6 +22,7 @@ const ModalProvider = ({ children }: { children: React.ReactNode }) => {
     setModals([]);
   };
 
+  // esc 키를 누르면 마지막에 추가한 모달부터 순차적으로 닫힘
   useEffect(() => {
     function onKeyDownESC(e: KeyboardEvent) {
       if (e.code === "Escape") setModals((prev) => prev.slice(0, -1));
