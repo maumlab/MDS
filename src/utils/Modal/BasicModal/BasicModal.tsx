@@ -1,7 +1,8 @@
 import Modal from "../Modal";
 import { BasicModalProps } from "./BasicModal.type";
-import { Container } from "./BasicModal.style";
+import { Container, ModalHeader } from "./BasicModal.style";
 import { Text } from "../../../components";
+import { CloseIcon } from "../../../assets/icons";
 
 const BasicModal = ({
   title,
@@ -12,7 +13,12 @@ const BasicModal = ({
   return (
     <Modal {...props}>
       <Container $gap={gap}>
-        <Text typo="h3">{title}</Text>
+        <ModalHeader>
+          <Text typo="h3" whiteSpace="pre-wrap" lineHeight={38}>
+            {title}
+          </Text>
+          <CloseIcon onClick={props.onClose} />
+        </ModalHeader>
         {children}
       </Container>
     </Modal>

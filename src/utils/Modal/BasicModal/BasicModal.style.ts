@@ -12,3 +12,19 @@ export const Container = styled.div<{ $gap: number }>`
   flex-direction: column;
   gap: ${({ $gap }) => $gap}px;
 `;
+
+export const ModalHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  & > svg {
+    margin-top: 7px;
+    cursor: pointer;
+
+    @media (hover: hover) {
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+`;
