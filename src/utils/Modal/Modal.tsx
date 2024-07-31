@@ -4,29 +4,37 @@ import { ModalProps } from "./Modal.type";
 import { generateUniqueId } from "../../lib";
 import { MODAL_Z_INDEX } from "../../constants";
 import { ModalWrapper } from "./Modal.style";
+import { useModal } from "./hooks";
 
-const Modal = ({ onClose, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
-  const portalId = `portal_${generateUniqueId()}`;
+const Modal = ({ _key, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
+  const modalId = `modal_${generateUniqueId()}`;
   const [container, setContainer] = useState<Element | null>(null);
+  const { onClose } = useModal();
 
   useEffect(() => {
     const newContainer = document.createElement("div");
-    newContainer.setAttribute("id", portalId);
+    newContainer.setAttribute("id", modalId);
     document.body.appendChild(newContainer);
 
     setContainer(newContainer);
 
     return () => {
-      const containerDOM = document.getElementById(portalId) as HTMLDivElement;
+      const containerDOM = document.getElementById(modalId) as HTMLDivElement;
       containerDOM.remove();
     };
   }, []);
 
   return (
     <Portal container={container}>
-      <ModalWrapper zIndex={zIndex}>
-        <div className="background mask" onClick={onClose}></div>
-        <div className="content">{children}</div>
+      <ModalWrapper
+        zIndex={zIndex}
+        onClick={() => {
+          onClose(_key);
+        }}
+      >
+        <div className="content" onClick={(e) => e.stopPropagation()}>
+          {children}
+        </div>
       </ModalWrapper>
     </Portal>
   );

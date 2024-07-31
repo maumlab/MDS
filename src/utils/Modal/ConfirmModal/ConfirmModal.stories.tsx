@@ -15,17 +15,36 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof ConfirmModal> = (args) => {
-  const { onOpen, onClose } = useModal();
+  const { onOpen } = useModal();
 
   return (
     <Button
       onClick={() =>
         onOpen<ConfirmModalProps>({
-          key: "confirm",
           Component: ConfirmModal,
           props: {
+            ...args,
+            _key: "confirm",
             title: "알림",
-            onClose: () => onClose("confirm"),
+            children: (
+              <div>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+              </div>
+            ),
           },
         })
       }
