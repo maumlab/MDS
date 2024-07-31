@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import { themes } from "../../../styles";
 
-export const Container = styled.div<{ $gap: number }>`
+export const Container = styled.div<{ $gap: number; $width: number }>`
   background-color: ${themes.colors.white};
   ${themes.radius.lg};
   ${themes.shadow.md};
   padding: 48px;
-  width: 400px;
+  width: ${({ $width }) => $width}px;
 
   display: flex;
   flex-direction: column;

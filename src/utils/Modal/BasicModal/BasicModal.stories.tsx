@@ -15,14 +15,13 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof BasicModal> = (args) => {
-  const { onOpen, onClose } = useModal();
+  const { onOpen } = useModal();
   return (
     <Button
       onClick={() =>
         onOpen<BasicModalProps>({
-          key: "basic",
           Component: BasicModal,
-          props: { title: "알림", onClose: () => onClose("basic") },
+          props: { _key: "basic", title: "알림" },
         })
       }
     >

@@ -15,7 +15,7 @@ const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   const onClose = (key: string) => {
-    setModals((prev) => prev.filter((modal) => modal.key !== key));
+    setModals((prev) => prev.filter((modal) => modal.props._key !== key));
   };
 
   const onClear = () => {
@@ -34,6 +34,16 @@ const ModalProvider = ({ children }: { children: React.ReactNode }) => {
     };
   }, []);
 
+  // 모달이 열렸을 때 body에 overflow: hidden이 추가되어야 함.
+  useEffect(() => {
+    document.body.style.overflow = modals.length ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [modals]);
+
+  // TODO 모달이 열렸을 때 해당 모달로 포커스가 이동되어야 함.
+
   return (
     <ModalContext.Provider
       value={{
@@ -44,8 +54,8 @@ const ModalProvider = ({ children }: { children: React.ReactNode }) => {
     >
       {children}
       {modals?.map((modal) => {
-        const { key, Component, props } = modal;
-        return <Component key={key} {...props} />;
+        const { Component, props } = modal;
+        return <Component key={props._key} {...props} />;
       })}
     </ModalContext.Provider>
   );
