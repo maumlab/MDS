@@ -206,6 +206,14 @@ const focusVisible = css`
   box-shadow: ${colors.blue} 0px 0px 0px 2px;
 `;
 
+// DESKTOP first
+export const BREAKPOINTS = {
+  MOBILE: 360,
+  TABLET: 768,
+  LAPTOP: 1280,
+  DESKTOP: 1440,
+} as const;
+
 const themes = {
   colors,
   typos,
@@ -213,6 +221,16 @@ const themes = {
   shadow,
   spacing,
   focusVisible,
+  screen: {
+    mobile: `@media (max-width: ${BREAKPOINTS.TABLET - 1}px)`,
+    tablet: `@media (min-width: ${BREAKPOINTS.TABLET}px) and (max-width: ${
+      BREAKPOINTS.LAPTOP - 1
+    }px)`,
+    laptop: `@media (min-width: ${BREAKPOINTS.LAPTOP}px) and (max-width: ${
+      BREAKPOINTS.DESKTOP - 1
+    }px)`,
+    desktop: `@media (min-width: ${BREAKPOINTS.DESKTOP}px)`,
+  },
 } as const;
 
 type ColorType = keyof typeof colors;

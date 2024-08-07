@@ -21,7 +21,7 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
       onClick={() =>
         onOpen<BasicModalProps>({
           Component: BasicModal,
-          props: { _key: "basic", title: "알림" },
+          props: { ...args },
         })
       }
     >
@@ -32,4 +32,7 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Primary.args = {};
+Primary.args = {
+  _key: "basic",
+  title: "베이직",
+};

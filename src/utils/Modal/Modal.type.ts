@@ -1,3 +1,7 @@
+/**
+ * @param {string} _key 모달 고유 키
+ * @param {number} zIndex z-index, default: 1000
+ */
 export type ModalProps = {
   _key: string;
   zIndex?: number;

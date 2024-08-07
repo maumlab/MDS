@@ -3,9 +3,12 @@ import Portal from "../Portal";
 import { ModalProps } from "./Modal.type";
 import { generateUniqueId } from "../../lib";
 import { MODAL_Z_INDEX } from "../../constants";
-import { ModalWrapper } from "./Modal.style";
+import { Overlay } from "./Modal.style";
 import { useModal } from "./hooks";
 
+/**
+ * Overlay 위로 children이 띄워지는 컴포넌트 (children의 위치는 모달을 사용하는 곳에서 지정)
+ */
 const Modal = ({ _key, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
   const modalId = `modal_${generateUniqueId()}`;
   const [container, setContainer] = useState<Element | null>(null);
@@ -26,16 +29,14 @@ const Modal = ({ _key, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
 
   return (
     <Portal container={container}>
-      <ModalWrapper
+      <Overlay
         zIndex={zIndex}
         onClick={() => {
           onClose(_key);
         }}
       >
-        <div className="content" onClick={(e) => e.stopPropagation()}>
-          {children}
-        </div>
-      </ModalWrapper>
+        <div onClick={(e) => e.stopPropagation()}>{children}</div>
+      </Overlay>
     </Portal>
   );
 };
