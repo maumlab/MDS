@@ -23,7 +23,7 @@ const ConfirmModal = ({
   return (
     <BasicModal {...props} role="confirm">
       {children}
-      <ButtonWrapper>
+      <ButtonWrapper data-responsive={props.responsive ?? false}>
         <CancelButton
           data-responsive={props.responsive ?? false}
           variant={cancelVariant}

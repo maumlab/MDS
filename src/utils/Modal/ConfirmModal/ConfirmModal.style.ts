@@ -6,6 +6,12 @@ export const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
+
+  &[data-responsive="true"] {
+    ${themes.screen.mobile} {
+      gap: 8px;
+    }
+  }
 `;
 
 const BaseButton = styled(Button)`
