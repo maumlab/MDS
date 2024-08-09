@@ -1,7 +1,10 @@
-import { Button } from "../../../components";
 import { BasicModal } from "../BasicModal";
 import { useModal } from "../hooks";
-import { ButtonWrapper } from "./ConfirmModal.style";
+import {
+  ButtonWrapper,
+  CancelButton,
+  ConfirmButton,
+} from "./ConfirmModal.style";
 import { ConfirmModalProps } from "./ConfirmModal.type";
 
 const ConfirmModal = ({
@@ -18,10 +21,11 @@ const ConfirmModal = ({
   const { onClose } = useModal();
 
   return (
-    <BasicModal {...props}>
+    <BasicModal {...props} role="confirm">
       {children}
       <ButtonWrapper>
-        <Button
+        <CancelButton
+          data-responsive={props.responsive ?? false}
           variant={cancelVariant}
           onClick={async () => {
             if (onCancel) {
@@ -31,8 +35,9 @@ const ConfirmModal = ({
           }}
         >
           {cancelLabel}
-        </Button>
-        <Button
+        </CancelButton>
+        <ConfirmButton
+          data-responsive={props.responsive ?? false}
           variant={confirmVariant}
           onClick={async () => {
             if (onConfirm) {
@@ -45,7 +50,7 @@ const ConfirmModal = ({
           }}
         >
           {confirmLabel}
-        </Button>
+        </ConfirmButton>
       </ButtonWrapper>
     </BasicModal>
   );

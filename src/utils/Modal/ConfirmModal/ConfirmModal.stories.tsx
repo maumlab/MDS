@@ -26,25 +26,7 @@ const Template: ComponentStory<typeof ConfirmModal> = (args) => {
             ...args,
             _key: "confirm",
             title: "알림",
-            children: (
-              <div>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-              </div>
-            ),
+            children: "contents",
           },
         })
       }
