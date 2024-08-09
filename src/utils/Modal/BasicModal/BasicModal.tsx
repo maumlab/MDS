@@ -23,15 +23,6 @@ const BasicModal = ({
 
   return (
     <Modal {...props}>
-      {/* <Container $size={size} $responsive={responsive}>
-        <ModalHeader>
-          <Text className="title" typo="h3" whiteSpace="pre-wrap">
-            {title}
-          </Text>
-          <CloseIcon onClick={() => onClose(props._key)} />
-        </ModalHeader>
-        {children}
-      </Container> */}
       <S.Container data-size={size} data-responsive={responsive}>
         <div className="header">
           <Text

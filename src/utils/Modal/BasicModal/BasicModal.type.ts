@@ -1,8 +1,8 @@
 import { ModalProps } from "../Modal.type";
 
 /**
- * @param XS 380px
- * @param SM 600px
+ * @param XS 380px -> 300px -> 300px
+ * @param SM 600px -> 450px -> 300px
  * @param MD 800px
  * @param LG 1000px
  */
