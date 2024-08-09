@@ -21,7 +21,25 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
       onClick={() =>
         onOpen<BasicModalProps>({
           Component: BasicModal,
-          props: { ...args, children: "contents" },
+          props: {
+            ...args,
+            children: (
+              <div>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+                <Button>ㅁ</Button>
+              </div>
+            ),
+          },
         })
       }
     >

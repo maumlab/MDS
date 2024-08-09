@@ -3,12 +3,18 @@ import { themes } from "../../../styles";
 
 export const Container = styled.div`
   // 가운데 정렬
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 100%;
-  margin-inline: auto;
+  max-width: 100%; */
+  /* margin-inline: auto; */
+  /* margin: auto; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 
   // 배경색, 그림자, 모서리
   background-color: ${themes.colors.white};
