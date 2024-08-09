@@ -56,8 +56,10 @@ export const Container = styled.div`
   padding: 48px;
   gap: 24px;
 
-  svg {
-    margin-top: 7px;
+  & > .header {
+    & > svg {
+      margin-top: 7px;
+    }
   }
 
   // Tablet, Mobile 반응형
@@ -74,12 +76,12 @@ export const Container = styled.div`
         width: 450px;
       }
 
-      .title {
+      & > .header > .title {
         font-size: 20px;
         line-height: 29px !important;
       }
 
-      svg {
+      & > .header > svg {
         margin-top: 2.5px;
       }
     }
@@ -96,13 +98,20 @@ export const Container = styled.div`
         width: 300px;
       }
 
-      .title {
+      & > .header > .title {
         font-size: 16px;
         line-height: 23px !important;
       }
 
-      svg {
+      & > .header > svg {
         margin-top: 0px;
+      }
+
+      &[data-role="alert"],
+      &[data-role="confirm"] {
+        & > .header > svg {
+          display: none;
+        }
       }
     }
   }

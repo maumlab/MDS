@@ -17,13 +17,18 @@ const BasicModal = ({
   size = "SM",
   responsive = false,
   children,
+  role = "basic",
   ...props
 }: BasicModalProps) => {
   const { onClose } = useModal();
 
   return (
     <Modal {...props}>
-      <S.Container data-size={size} data-responsive={responsive}>
+      <S.Container
+        data-role={role}
+        data-size={size}
+        data-responsive={responsive}
+      >
         <div className="header">
           <Text
             className="title"

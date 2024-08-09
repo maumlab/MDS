@@ -1,7 +1,7 @@
-import { Button } from "../../../components";
-import { BasicModal } from "../BasicModal";
 import { useModal } from "../hooks";
 import { AlertModalProps } from "./AlertModal.type";
+import * as S from "./AlertModal.style";
+import { BasicModal } from "../BasicModal";
 
 const AlertModal = ({
   buttonLabel = "확인",
@@ -14,9 +14,10 @@ const AlertModal = ({
   const { onClose } = useModal();
 
   return (
-    <BasicModal {...props}>
+    <BasicModal {...props} role="alert">
       {children}
-      <Button
+      <S.ConfirmButton
+        data-responsive={props.responsive ?? false}
         variant={variant}
         onClick={async () => {
           if (onConfirm) {
@@ -29,7 +30,7 @@ const AlertModal = ({
         }}
       >
         {buttonLabel}
-      </Button>
+      </S.ConfirmButton>
     </BasicModal>
   );
 };
