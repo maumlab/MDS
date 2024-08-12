@@ -24,24 +24,26 @@ const BasicModal = ({
 
   return (
     <Modal {...props}>
-      <S.Container
-        data-role={role}
-        data-size={size}
-        data-responsive={responsive}
-      >
-        <div className="header">
-          <Text
-            className="title"
-            typo="h3"
-            whiteSpace="pre-wrap"
-            wordBreak="break-all"
-            lineHeight={38}
-          >
-            {title}
-          </Text>
-          <CloseIcon onClick={() => onClose(props._key)} />
-        </div>
-        {children}
+      <S.Container>
+        <S.Wrapper
+          data-role={role}
+          data-size={size}
+          data-responsive={responsive}
+        >
+          <div className="header">
+            <Text
+              className="title"
+              typo="h3"
+              whiteSpace="pre-wrap"
+              wordBreak="break-all"
+              lineHeight={38}
+            >
+              {title}
+            </Text>
+            <CloseIcon onClick={() => onClose(props._key)} />
+          </div>
+          {children}
+        </S.Wrapper>
       </S.Container>
     </Modal>
   );

@@ -13,11 +13,7 @@ export const Overlay = styled.div<Pick<ModalProps, "zIndex">>`
   background-color: rgba(0, 0, 0, 0.6);
 
   & > div {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: fit-content;
+    height: fit-content;
   }
 `;

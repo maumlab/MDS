@@ -2,20 +2,20 @@ import styled from "@emotion/styled";
 import { themes } from "../../../styles";
 
 export const Container = styled.div`
+  position: relative;
+
   // 가운데 정렬
-  /* position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 100%; */
-  /* margin-inline: auto; */
-  /* margin: auto; */
+  max-width: 100%;
+  margin-inline: auto;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
+  max-height: 90vh;
+`;
 
+export const Wrapper = styled.div`
   // 배경색, 그림자, 모서리
   background-color: ${themes.colors.white};
   ${themes.radius.lg};
