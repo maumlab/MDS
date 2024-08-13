@@ -1,4 +1,11 @@
-import React, { createContext, ForwardedRef, useContext, useMemo, useRef, useState } from "react";
+import React, {
+  createContext,
+  ForwardedRef,
+  useContext,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import {
   DropdownBarProps,
   DropdownOptionListProps,
@@ -17,7 +24,14 @@ import { BaseBar, BaseOption, BaseOptionList } from "./Dropdown.style";
 const DropdownProvider = createContext<
   Pick<
     DropdownProviderProps<never>,
-    "container" | "triggerRef" | "optionListRef" | "expanded" | "disabled" | "close" | "onChange" | "optionVariant"
+    | "container"
+    | "triggerRef"
+    | "optionListRef"
+    | "expanded"
+    | "disabled"
+    | "close"
+    | "onChange"
+    | "optionVariant"
   >
 >({
   container: null,
@@ -42,7 +56,8 @@ const Dropdown = <T,>({
   const optionListRef = useRef<HTMLUListElement>(null);
 
   // optionList portal
-  const [container, setContainer] = useState<DropdownProviderProps["container"]>(null);
+  const [container, setContainer] =
+    useState<DropdownProviderProps["container"]>(null);
   const expanded = container !== null;
   const uniqueId = useMemo(() => generateUniqueId(), []);
 
@@ -62,14 +77,14 @@ const Dropdown = <T,>({
     expanded ? close() : open();
   };
 
-  //   // optionList의 위치를 정하는 로직
+  // optionList의 위치를 정하는 로직
   useOptionListPosition({
     container,
     triggerRef,
     optionListRef,
     optionVariant,
   });
-  //   // event handlers
+  // event handlers
   useClick({
     triggerRef,
     optionListRef,
@@ -104,7 +119,8 @@ const Dropdown = <T,>({
           | "onChange"
           | "optionVariant"
         >
-      }>
+      }
+    >
       {children}
     </DropdownProvider.Provider>
   );
@@ -122,29 +138,56 @@ Dropdown.Trigger = ({ children }: { children: React.ReactElement }) => {
 };
 
 Dropdown.Bar = React.forwardRef(
-  ({ value, placeholder, disabled = false, ...props }: DropdownBarProps, ref: ForwardedRef<HTMLDivElement>) => {
+  (
+    { value, placeholder, disabled = false, ...props }: DropdownBarProps,
+    ref: ForwardedRef<HTMLDivElement>
+  ) => {
     return (
-      <BaseBar ref={ref} role="button" tabIndex={disabled ? -1 : 0} aria-disabled={disabled} {...props}>
-        <span aria-placeholder={value ? undefined : placeholder}>{value || placeholder}</span>
+      <BaseBar
+        ref={ref}
+        role="button"
+        tabIndex={disabled ? -1 : 0}
+        aria-disabled={disabled}
+        {...props}
+      >
+        <span aria-placeholder={value ? undefined : placeholder}>
+          {value || placeholder}
+        </span>
         <ChevronDownIcon size={24} className="arrowIcon" />
       </BaseBar>
     );
   }
 );
 
-Dropdown.OptionList = ({ children, zIndex = popperZIndex, maxHeight = 400, ...props }: DropdownOptionListProps) => {
+Dropdown.OptionList = ({
+  children,
+  zIndex = popperZIndex,
+  maxHeight = 400,
+  ...props
+}: DropdownOptionListProps) => {
   const { container, optionListRef } = useContext(DropdownProvider);
 
   return (
     <Portal container={container}>
-      <BaseOptionList role="listbox" ref={optionListRef} style={{ zIndex, maxHeight }} {...props}>
+      <BaseOptionList
+        role="listbox"
+        ref={optionListRef}
+        style={{ zIndex, maxHeight }}
+        {...props}
+      >
         {children}
       </BaseOptionList>
     </Portal>
   );
 };
 
-Dropdown.Option = ({ value, label, selected = false, disabled = false, ...props }: DropdownOptionProps) => {
+Dropdown.Option = ({
+  value,
+  label,
+  selected = false,
+  disabled = false,
+  ...props
+}: DropdownOptionProps) => {
   const { optionVariant } = useContext(DropdownProvider);
 
   return (
@@ -156,7 +199,8 @@ Dropdown.Option = ({ value, label, selected = false, disabled = false, ...props 
       aria-selected={selected}
       tabIndex={selected ? 0 : -1}
       $optionVariant={optionVariant}
-      {...props}>
+      {...props}
+    >
       {label ?? value}
     </BaseOption>
   );

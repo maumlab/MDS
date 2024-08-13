@@ -35,12 +35,10 @@ const Modal = ({
 
   useEffect(() => {
     if (container) {
-      console.log(contentRef.current);
       if (contentRef.current) {
         const childElement = contentRef.current.querySelector(
           ":scope > div, :scope > section"
         );
-        console.log(childElement);
         if (childElement) {
           const childHeight = childElement.scrollHeight;
           const vh10 = window.innerHeight * 0.1;

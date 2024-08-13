@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import BasicModal from "./BasicModal";
@@ -16,6 +16,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof BasicModal> = (args) => {
   const { onOpen } = useModal();
+
   return (
     <Button
       onClick={() =>
@@ -23,20 +24,24 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
           Component: BasicModal,
           props: {
             ...args,
+            _key: "basic",
             children: (
               <div>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
-                <Button>ㅁ</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
+                <Button>버튼</Button>
               </div>
             ),
           },
@@ -51,6 +56,5 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
-  _key: "basic",
   title: "베이직",
 };
