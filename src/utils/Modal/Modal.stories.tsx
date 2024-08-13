@@ -24,10 +24,6 @@ const Template: ComponentStory<typeof Modal> = (args) => {
         children: (
           <div
             style={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
               backgroundColor: "white",
               borderRadius: 16,
               padding: 48,

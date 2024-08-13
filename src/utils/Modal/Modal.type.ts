@@ -6,6 +6,7 @@ export type ModalProps = {
   _key: string;
   zIndex?: number;
   children?: React.ReactNode;
+  position?: "center" | "left" | "right";
 };
 
 export type ModalType<T> = {

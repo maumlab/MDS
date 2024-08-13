@@ -1,24 +1,30 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Portal from "../Portal";
 import { ModalProps } from "./Modal.type";
 import { generateUniqueId } from "../../lib";
 import { MODAL_Z_INDEX } from "../../constants";
-import { Overlay } from "./Modal.style";
+import { ModalWrapper } from "./Modal.style";
 import { useModal } from "./hooks";
 
 /**
- * Overlay 위로 children이 띄워지는 컴포넌트 (children의 위치는 모달을 사용하는 곳에서 지정, 스토리북 참고)
+ * Overlay 위로 children이 띄워지는 컴포넌트
  */
-const Modal = ({ _key, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
+const Modal = ({
+  _key,
+  zIndex = MODAL_Z_INDEX,
+  children,
+  position = "center",
+}: ModalProps) => {
   const modalId = `modal_${generateUniqueId()}`;
   const [container, setContainer] = useState<Element | null>(null);
   const { onClose } = useModal();
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [overlayHeight, setOverlayHeight] = useState<string | number>("100%");
 
   useEffect(() => {
     const newContainer = document.createElement("div");
     newContainer.setAttribute("id", modalId);
     document.body.appendChild(newContainer);
-
     setContainer(newContainer);
 
     return () => {
@@ -27,16 +33,35 @@ const Modal = ({ _key, zIndex = MODAL_Z_INDEX, children }: ModalProps) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (container) {
+      console.log(contentRef.current);
+      if (contentRef.current) {
+        const childElement = contentRef.current.querySelector(
+          ":scope > div, :scope > section"
+        );
+        console.log(childElement);
+        if (childElement) {
+          const childHeight = childElement.scrollHeight;
+          const vh10 = window.innerHeight * 0.1;
+          setOverlayHeight(childHeight + vh10);
+        }
+      }
+    }
+  }, [children, container]);
+
   return (
     <Portal container={container}>
-      <Overlay
-        zIndex={zIndex}
-        onClick={() => {
-          onClose(_key);
-        }}
-      >
-        <div onClick={(e) => e.stopPropagation()}>{children}</div>
-      </Overlay>
+      <ModalWrapper zIndex={zIndex}>
+        <div
+          className={`overlay mask`}
+          style={{ height: overlayHeight }}
+          onClick={() => onClose(_key)}
+        />
+        <div className="content" data-position={position} ref={contentRef}>
+          {children}
+        </div>
+      </ModalWrapper>
     </Portal>
   );
 };
