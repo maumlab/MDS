@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof AlertModal> = (args) => {
             ...args,
             _key: "alert",
             title: "알림",
-            children: "contents",
+            children: <div>contents</div>,
             onConfirm: async () => {
               alert("확인 버튼 클릭"); // 실행 로직
 

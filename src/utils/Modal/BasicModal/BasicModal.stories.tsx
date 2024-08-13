@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import BasicModal from "./BasicModal";
@@ -17,6 +17,7 @@ export default {
 const Template: ComponentStory<typeof BasicModal> = (args) => {
   const { onOpen } = useModal();
 
+  // FIXME children에 드롭다운을 주면 드롭다운 onChange가 작동하지 않음
   return (
     <Button
       onClick={() =>
@@ -25,25 +26,7 @@ const Template: ComponentStory<typeof BasicModal> = (args) => {
           props: {
             ...args,
             _key: "basic",
-            children: (
-              <div>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-                <Button>버튼</Button>
-              </div>
-            ),
+            children: <div>Content</div>,
           },
         })
       }

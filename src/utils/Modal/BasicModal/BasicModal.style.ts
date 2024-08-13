@@ -3,12 +3,6 @@ import { themes } from "../../../styles";
 
 export const Container = styled.div`
   position: relative;
-
-  // 가운데 정렬
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   max-width: 100%;
   margin-inline: auto;
 

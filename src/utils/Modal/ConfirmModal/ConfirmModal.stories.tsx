@@ -26,7 +26,7 @@ const Template: ComponentStory<typeof ConfirmModal> = (args) => {
             ...args,
             _key: "confirm",
             title: "알림",
-            children: "contents",
+            children: <div>contents</div>,
           },
         })
       }
