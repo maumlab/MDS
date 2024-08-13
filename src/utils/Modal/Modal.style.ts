@@ -39,8 +39,8 @@ export const ModalWrapper = styled.div<Pick<ModalProps, "zIndex">>`
 
     &.mask {
       background-color: rgba(0, 0, 0, 0.4);
-      animation: ${opacityIn} 200ms ease-in;
-      animation-fill-mode: forwards;
+      /* animation: ${opacityIn} 200ms ease-in;
+      animation-fill-mode: forwards; */
     }
   }
 
@@ -55,10 +55,10 @@ export const ModalWrapper = styled.div<Pick<ModalProps, "zIndex">>`
     // TODO position: left, right 추가
 
     max-width: 100vw;
-    > div,
+    /* > div,
     > section {
       animation: ${slideIn} 200ms ease-in;
       animation-fill-mode: forwards;
-    }
+    } */
   }
 `;
