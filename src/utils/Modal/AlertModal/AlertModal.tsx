@@ -14,7 +14,7 @@ const AlertModal = ({
   const { onClose } = useModal();
 
   return (
-    <BasicModal {...props} role="alert">
+    <BasicModal {...props} isResponsiveCloseIconVisible={false}>
       {children}
       <S.ConfirmButton
         data-responsive={props.responsive ?? false}

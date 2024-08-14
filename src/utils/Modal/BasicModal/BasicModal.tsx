@@ -17,7 +17,7 @@ const BasicModal = ({
   size = "SM",
   responsive = false,
   children,
-  role = "basic",
+  isResponsiveCloseIconVisible = true,
   ...props
 }: BasicModalProps) => {
   const { onClose } = useModal();
@@ -26,7 +26,7 @@ const BasicModal = ({
     <Modal {...props}>
       <S.Container>
         <S.Wrapper
-          data-role={role}
+          data-isResponsiveCloseIconVisible={isResponsiveCloseIconVisible}
           data-size={size}
           data-responsive={responsive}
         >

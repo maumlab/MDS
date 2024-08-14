@@ -21,7 +21,7 @@ const ConfirmModal = ({
   const { onClose } = useModal();
 
   return (
-    <BasicModal {...props} role="confirm">
+    <BasicModal {...props} isResponsiveCloseIconVisible={false}>
       {children}
       <ButtonWrapper data-responsive={props.responsive ?? false}>
         <CancelButton
