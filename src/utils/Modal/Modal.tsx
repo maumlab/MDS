@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Portal from "../Portal";
 import { ModalProps } from "./Modal.type";
 import { generateUniqueId } from "../../lib";
@@ -15,7 +15,7 @@ const Modal = ({
   children,
   position = "center",
 }: ModalProps) => {
-  const modalId = `modal_${generateUniqueId()}`;
+  const modalId = useMemo(() => `modal_${generateUniqueId()}`, []);
   const [container, setContainer] = useState<Element | null>(null);
   const { onClose } = useModal();
   const contentRef = useRef<HTMLDivElement>(null);
