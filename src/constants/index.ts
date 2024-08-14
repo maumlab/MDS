@@ -1,1 +1,1 @@
-export const MODAL_Z_INDEX = 1000;
+export * from "./zIndex";
