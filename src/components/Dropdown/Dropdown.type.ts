@@ -57,5 +57,12 @@ export type DropdownOptionProps<T = string> = ComponentPropsWithRef<"li"> & {
 
 export type DropdownEventParamsProps<T = string> = Pick<
   DropdownProviderProps<T>,
-  "triggerRef" | "optionListRef" | "expanded" | "close" | "toggle" | "onChange" | "disabled" | "multiple"
+  | "triggerRef"
+  | "optionListRef"
+  | "expanded"
+  | "close"
+  | "toggle"
+  | "onChange"
+  | "disabled"
+  | "multiple"
 >;
