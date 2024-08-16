@@ -153,7 +153,7 @@ Dropdown.Bar = React.forwardRef(
         <span aria-placeholder={value ? undefined : placeholder}>
           {value || placeholder}
         </span>
-        <ChevronDownIcon size={24} className="arrowIcon" />
+        <ChevronDownIcon size={24} className="arrowIcon" fillColor="gray3" />
       </BaseBar>
     );
   }
