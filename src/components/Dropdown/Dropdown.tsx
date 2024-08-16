@@ -18,8 +18,8 @@ import useOptionListPosition from "./hooks/useOptionListPosition";
 import useClick from "./hooks/useClick";
 import { Portal } from "../../utils";
 import { ChevronDownIcon } from "../../assets/icons";
-import { popperZIndex } from "../../styles";
 import { BaseBar, BaseOption, BaseOptionList } from "./Dropdown.style";
+import { POPPER_Z_INDEX } from "../../constants";
 
 const DropdownProvider = createContext<
   Pick<
@@ -161,7 +161,7 @@ Dropdown.Bar = React.forwardRef(
 
 Dropdown.OptionList = ({
   children,
-  zIndex = popperZIndex,
+  zIndex = POPPER_Z_INDEX,
   maxHeight = 400,
   ...props
 }: DropdownOptionListProps) => {
