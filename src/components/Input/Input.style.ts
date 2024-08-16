@@ -37,7 +37,7 @@ export const BaseInput = styled.input<{ $variant: InputVariant }>`
 
   &:disabled {
     cursor: not-allowed;
-    background-color: ${themes.colors.gray5};
+    background-color: ${themes.colors.gray6};
   }
 
   &[data-error="true"] {

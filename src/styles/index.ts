@@ -9,5 +9,3 @@ export {
   BREAKPOINTS,
 } from "./themes";
 export type * from "./themes";
-
-export * from "./zIndex";
