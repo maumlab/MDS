@@ -12,7 +12,7 @@ export const BaseBar = styled.div`
   ${themes.radius.md};
   min-height: 50px;
 
-  background-color: ${themes.colors.gray7};
+  background-color: ${themes.colors.white};
   -webkit-tap-highlight-color: transparent;
   cursor: pointer;
 
@@ -45,8 +45,12 @@ export const BaseBar = styled.div`
     }
   }
   &[aria-disabled="true"] {
-    opacity: 0.3;
+    background-color: ${themes.colors.gray6};
     cursor: not-allowed;
+
+    & > svg {
+      opacity: 0.3;
+    }
   }
   &:focus {
     outline: none;
@@ -124,7 +128,7 @@ export const BaseOption = styled.li<{
 
   &[aria-disabled="true"] {
     cursor: not-allowed;
-    background-color: ${hexToRgba(themes.colors.gray7, 30)};
+    background-color: ${themes.colors.gray6};
     color: ${hexToRgba(themes.colors.gray1, 30)};
   }
 `;
