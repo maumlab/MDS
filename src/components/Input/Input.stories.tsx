@@ -82,6 +82,7 @@ export const Primary = Template.bind({});
 Primary.args = {
   variant: "metri",
   placeholder: "Placeholder",
+  disabled: false,
 };
 
 export const WithLabelComponent = WithLabelTemplate.bind({});
