@@ -42,6 +42,7 @@ export const Container = styled.div`
 
   &[data-center="true"] {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 `;

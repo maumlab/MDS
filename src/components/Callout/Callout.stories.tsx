@@ -17,6 +17,9 @@ const Template: ComponentStory<typeof Callout> = (args) => (
     <Callout.Item>
       <Callout.Message>삭제되었습니다.</Callout.Message>
     </Callout.Item>
+    <Callout.Item>
+      <Callout.Message>삭제되었습니다.</Callout.Message>
+    </Callout.Item>
   </Callout>
 );
 
