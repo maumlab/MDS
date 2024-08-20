@@ -4,11 +4,22 @@ export type * from "./AlertMessage";
 export { default as Avatar, AvatarSize } from "./Avatar";
 export type * from "./Avatar";
 
-export { Badge, StatusBadge, RoleBadge, LevelBadge, SearchBadge, BadgeStatus, BadgeRole, BadgeSearch } from "./Badge";
+export {
+  Badge,
+  StatusBadge,
+  RoleBadge,
+  LevelBadge,
+  SearchBadge,
+  BadgeStatus,
+  BadgeRole,
+  BadgeSearch,
+} from "./Badge";
 export type * from "./Badge";
 
 export { default as Button } from "./Button";
 export type * from "./Button";
+
+export { Callout } from "./Callout";
 
 export { default as Checkbox } from "./Checkbox";
 export type * from "./Checkbox";
