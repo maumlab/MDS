@@ -62,6 +62,7 @@ export const LineBaseInput = styled.input`
   border-bottom: 2px solid ${themes.colors.gray6};
   padding: 11px 12px;
   outline: none;
+  border-radius: 0;
 
   caret-color: ${themes.colors.blue};
 
