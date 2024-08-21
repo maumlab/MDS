@@ -107,7 +107,7 @@ export const Wrapper = styled.div`
         margin-top: 0px;
       }
 
-      &[data-isResponsiveCloseIconVisible="false"] {
+      &[data-isresponsivecloseiconvisible="false"] {
         & > .header > svg {
           display: none;
         }

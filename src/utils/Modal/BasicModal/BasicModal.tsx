@@ -26,7 +26,7 @@ const BasicModal = ({
     <Modal {...props}>
       <S.Container>
         <S.Wrapper
-          data-isResponsiveCloseIconVisible={isResponsiveCloseIconVisible}
+          data-isresponsivecloseiconvisible={isResponsiveCloseIconVisible}
           data-size={size}
           data-responsive={responsive}
         >
