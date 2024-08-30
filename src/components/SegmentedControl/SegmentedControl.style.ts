@@ -4,7 +4,7 @@ import { SegmentedControlVariant } from "./SegmentedControl.type";
 
 export const BaseContainer = styled.div<{ $variant: SegmentedControlVariant }>`
   width: 100%;
-  height: 48px;
+  height: 50px;
   display: flex;
 
   ${({ $variant }) => {
