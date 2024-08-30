@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { themes } from "../../styles";
 import { InputVariant } from "./Input.type";
+import { hexToRgba } from "../../lib";
 
 export const BaseContainer = styled.div`
   display: flex;
@@ -27,8 +28,7 @@ export const BaseInput = styled.input<{ $variant: InputVariant }>`
   padding-left: 15px;
 
   &:focus {
-    border-color: ${({ $variant }) =>
-      $variant === "metri" ? themes.colors.blue : themes.colors.emrBlue1};
+    border-color: ${({ $variant }) => ($variant === "metri" ? themes.colors.blue : themes.colors.emrBlue1)};
   }
 
   &::placeholder {
@@ -38,6 +38,7 @@ export const BaseInput = styled.input<{ $variant: InputVariant }>`
   &:disabled {
     cursor: not-allowed;
     background-color: ${themes.colors.gray6};
+    color: ${hexToRgba(themes.colors.gray1, 0.3)};
   }
 
   &[data-error="true"] {
@@ -93,5 +94,6 @@ export const LineBaseInput = styled.input`
   &:disabled {
     cursor: not-allowed;
     background-color: ${themes.colors.gray7};
+    color: ${hexToRgba(themes.colors.gray1, 0.3)};
   }
 `;
