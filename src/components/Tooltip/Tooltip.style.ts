@@ -7,6 +7,7 @@ import { themes } from "../../styles";
 
 export const Wrapper = styled.div`
   position: relative;
+  width: fit-content;
 `;
 
 const FadeIn = keyframes`
