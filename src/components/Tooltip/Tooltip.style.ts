@@ -31,6 +31,11 @@ export const TooltipWrapper = styled.div<AddDollarSign<TooltipStyleProps>>`
   ${themes.typos.caption14Medium}
   ${themes.shadow.md}
 
+  ${({ $zIndex }) =>
+    css`
+      z-index: ${$zIndex ?? "auto"};
+    `}
+
   ${({ $color }) => {
     switch ($color) {
       case "black":

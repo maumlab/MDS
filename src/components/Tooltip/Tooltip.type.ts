@@ -10,6 +10,7 @@ export type TooltipStyleProps = {
   position: TooltipPosition;
   triPosition: TooltipTriPosition;
   color: TooltipColor;
+  zIndex?: number;
 };
 
 export type TooltipProps = Partial<TooltipStyleProps> & {

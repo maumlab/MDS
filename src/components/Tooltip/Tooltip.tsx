@@ -10,6 +10,7 @@ const Tooltip = ({
   position = "top",
   triPosition = "center",
   color = "black",
+  zIndex,
   content,
   disabled = false,
 }: TooltipProps) => {
@@ -47,7 +48,13 @@ const Tooltip = ({
     <Wrapper ref={triggerRef} onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={close}>
       {children}
       <Portal container={container}>
-        <TooltipWrapper role="tooltip" ref={tooltipRef} $position={position} $triPosition={triPosition} $color={color}>
+        <TooltipWrapper
+          role="tooltip"
+          ref={tooltipRef}
+          $position={position}
+          $triPosition={triPosition}
+          $color={color}
+          $zIndex={zIndex}>
           {content}
           <Tri className="tri" />
         </TooltipWrapper>
