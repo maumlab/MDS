@@ -17,6 +17,7 @@ const Tooltip = ({
   // refs
   const triggerRef = useRef<HTMLDivElement>(null);
   const tooltipRef = useRef<HTMLDivElement>(null);
+  const tooltipTimer = useRef<NodeJS.Timeout | null>(null);
 
   // tooltip portal
   const [container, setContainer] = useState<Element | null>(null);
@@ -25,17 +26,27 @@ const Tooltip = ({
   // open/close
   const open = () => {
     if (disabled) return;
-    const newContainer = document.createElement("div");
-    newContainer.id = uniqueId;
-    document.body.appendChild(newContainer);
-    setContainer(newContainer);
+
+    if (tooltipTimer.current) {
+      clearTimeout(tooltipTimer.current);
+      tooltipTimer.current = null;
+    }
+
+    if (!container) {
+      const newContainer = document.createElement("div");
+      newContainer.id = uniqueId;
+      document.body.appendChild(newContainer);
+      setContainer(newContainer);
+    }
+
     tooltipRef.current?.setAttribute("data-visible", "true");
   };
   const close = () => {
-    const container = document.getElementById(uniqueId);
     if (!container) return;
+
     tooltipRef.current?.setAttribute("data-visible", "false");
-    setTimeout(() => {
+
+    tooltipTimer.current = setTimeout(() => {
       container.remove();
       setContainer(null);
     }, 400);
