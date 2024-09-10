@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import useCalendar from "./hooks/useCalendar";
-import Calendar, { CalendarProps, CalendarVariant } from ".";
+import Calendar, { CalendarProps, CalendarSelectableType, CalendarVariant } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -25,8 +25,18 @@ const Template: ComponentStory<typeof Calendar> = ({
   const calendarProps = useCalendar({ selectableType, isMultiple });
   return (
     <div style={{ display: "flex", gap: 10 }}>
-      <Calendar {...args} {...calendarProps} variant={CalendarVariant.SMALL} />
-      <Calendar {...args} {...calendarProps} variant={CalendarVariant.MEDIUM} />
+      <Calendar
+        {...args}
+        {...calendarProps}
+        variant={CalendarVariant.SMALL}
+        selectableType={CalendarSelectableType.PAST}
+      />
+      <Calendar
+        {...args}
+        {...calendarProps}
+        variant={CalendarVariant.MEDIUM}
+        selectableType={CalendarSelectableType.FUTURE}
+      />
     </div>
   );
 };

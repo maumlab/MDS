@@ -52,5 +52,13 @@ export const Contents = styled.div`
   }
 `;
 
-export const Day = styled.div``;
-export const Content = styled.button``;
+export const Day = styled.div`
+  color: ${themes.colors.gray3};
+`;
+export const Content = styled.button`
+  color: ${themes.colors.gray3};
+
+  &[data-today="true"] {
+    color: ${themes.colors.blue};
+  }
+`;

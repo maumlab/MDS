@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { CalendarProps, CalendarVariant } from ".";
+import { CalendarProps, CalendarSelectableType, CalendarVariant } from ".";
 import { ChevronLeftIcon, ChevronRightIcon, IconSize } from "../../assets/icons";
 import Text from "../Text";
 import { ChevronButton, Container, Content, Contents, Day, Header } from "./Calendar.style";
@@ -7,7 +7,7 @@ import dayjs, { Dayjs } from "dayjs";
 
 const Calendar = ({
   variant = CalendarVariant.MEDIUM,
-  // selectableType = CalendarSelectableType.FUTURE,
+  selectableType = CalendarSelectableType.FUTURE,
   // date,
   // onChangeDate,
   hasBorder = true,
@@ -15,9 +15,11 @@ const Calendar = ({
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
   const [month, setMonth] = useState<Dayjs>(dayjs());
+  const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
 
   const isSmall = useMemo(() => variant === CalendarVariant.SMALL, [variant]);
-  const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
+
+  const today = useMemo(() => dayjs(), []);
   const dates = useMemo(() => {
     const firstDay = month.set("date", 1).day();
     const lastDate = month.daysInMonth();
@@ -53,7 +55,19 @@ const Calendar = ({
         {dates.map((date, i) => {
           if (typeof date !== "number") return <div key={`empty_${i}`} />;
 
-          return <Content key={`date_${date}`}>{date}</Content>;
+          const targetDate = month.set("date", date);
+          return (
+            <Content
+              key={`date_${date}`}
+              disabled={
+                selectableType === CalendarSelectableType.FUTURE
+                  ? today.isAfter(targetDate, "date")
+                  : today.isBefore(targetDate, "date")
+              }
+              data-today={today.isSame(targetDate, "date")}>
+              {date}
+            </Content>
+          );
         })}
       </Contents>
     </Container>
