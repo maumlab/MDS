@@ -9,8 +9,8 @@ const LineInput = forwardRef(
       <BaseContainer>
         <LineBaseInput ref={ref} {...props} data-error={!!error} data-success={!!success} />
         <Absolute>
-          {typeof error === "string" && <AlertMessage type="error" message={error} />}
-          {typeof success === "string" && <AlertMessage type="success" message={success} />}
+          {typeof error === "string" && !!error && <AlertMessage type="error" message={error} />}
+          {typeof success === "string" && !!success && <AlertMessage type="success" message={success} />}
         </Absolute>
       </BaseContainer>
     );
