@@ -59,6 +59,10 @@ export const Content = styled.button`
   color: ${themes.colors.gray3};
   border-radius: 50%;
 
+  &[data-holiday="true"] {
+    color: ${themes.colors.red};
+  }
+
   &[data-today="true"] {
     color: ${themes.colors.blue};
   }
@@ -73,9 +77,5 @@ export const Content = styled.button`
     &[data-selected="false"][data-included="true"] {
       opacity: 0.3;
     }
-  }
-
-  &[data-holiday="true"] {
-    color: ${themes.colors.red};
   }
 `;

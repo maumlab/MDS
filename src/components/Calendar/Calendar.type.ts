@@ -8,6 +8,15 @@ export enum CalendarSelectableType {
   "PAST" = "PAST",
   "FUTURE" = "FUTURE",
 }
+export const enum Day {
+  "일",
+  "월",
+  "화",
+  "수",
+  "목",
+  "금",
+  "토",
+}
 export type DateRange = { from: Date | null; to?: Date | null };
 
 export type CalendarProps = {
@@ -15,6 +24,7 @@ export type CalendarProps = {
   selectableType?: CalendarSelectableType; // default is 'FUTURE'
   date: DateRange;
   onChangeDate: (date: Dayjs) => void;
+  disabledDays?: Day[];
   hasBorder?: boolean; // default is true
 };
 

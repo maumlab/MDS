@@ -10,6 +10,7 @@ const Calendar = ({
   selectableType = CalendarSelectableType.FUTURE,
   date: selectedDate,
   onChangeDate,
+  disabledDays,
   hasBorder = true,
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
@@ -37,6 +38,13 @@ const Calendar = ({
     setMonth((prev) => prev.add(1, "month"));
   };
 
+  const isDisabledDate = (targetDate: Dayjs) => {
+    if (disabledDays?.includes(targetDate.day())) return true;
+
+    return selectableType === CalendarSelectableType.FUTURE
+      ? today.isAfter(targetDate, "date")
+      : today.isBefore(targetDate, "date");
+  };
   const isIncludedDate = (targetDate: Dayjs) => {
     if (!selectedDate.from || !selectedDate.to) return false;
 
@@ -74,15 +82,11 @@ const Calendar = ({
             <Content
               key={`date_${date}`}
               onClick={() => onChangeDate(targetDate)}
-              disabled={
-                selectableType === CalendarSelectableType.FUTURE
-                  ? today.isAfter(targetDate, "date")
-                  : today.isBefore(targetDate, "date")
-              }
+              disabled={isDisabledDate(targetDate)}
+              data-holiday={i % 7 === 0}
               data-today={today.isSame(targetDate, "date")}
               data-included={isIncludedDate(targetDate)}
-              data-selected={isSelectedDate(targetDate)}
-              data-holiday={i % 7 === 0}>
+              data-selected={isSelectedDate(targetDate)}>
               {date}
             </Content>
           );
