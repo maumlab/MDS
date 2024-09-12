@@ -16,24 +16,19 @@ export default {
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Calendar> = ({
-  selectableType,
   isMultiple,
   ...args
 }: CalendarProps & {
   isMultiple?: boolean;
 }) => {
-  const calendarProps = useCalendar({ selectableType, isMultiple });
+  const pastProps = useCalendar({ selectableType: CalendarSelectableType.PAST, isMultiple });
+  const futureProps = useCalendar({ selectableType: CalendarSelectableType.FUTURE, isMultiple });
   return (
     <div style={{ display: "flex", gap: 10 }}>
+      <Calendar {...args} {...pastProps} variant={CalendarVariant.SMALL} selectableType={CalendarSelectableType.PAST} />
       <Calendar
         {...args}
-        {...calendarProps}
-        variant={CalendarVariant.SMALL}
-        selectableType={CalendarSelectableType.PAST}
-      />
-      <Calendar
-        {...args}
-        {...calendarProps}
+        {...futureProps}
         variant={CalendarVariant.MEDIUM}
         selectableType={CalendarSelectableType.FUTURE}
       />

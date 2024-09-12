@@ -8,8 +8,8 @@ import dayjs, { Dayjs } from "dayjs";
 const Calendar = ({
   variant = CalendarVariant.MEDIUM,
   selectableType = CalendarSelectableType.FUTURE,
-  // date,
-  // onChangeDate,
+  date: selectedDate,
+  onChangeDate,
   hasBorder = true,
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
@@ -37,6 +37,20 @@ const Calendar = ({
     setMonth((prev) => prev.add(1, "month"));
   };
 
+  const isIncludedDate = (targetDate: Dayjs) => {
+    if (!selectedDate.from || !selectedDate.to) return false;
+
+    return targetDate.isAfter(dayjs(selectedDate.from), "date") && targetDate.isBefore(dayjs(selectedDate.to), "date");
+  };
+  const isSelectedDate = (targetDate: Dayjs) => {
+    if (!selectedDate.from && !selectedDate.to) return false;
+
+    return (
+      (selectedDate.from && targetDate.isSame(dayjs(selectedDate.from), "date")) ||
+      (selectedDate.to && targetDate.isSame(dayjs(selectedDate.to), "date"))
+    );
+  };
+
   return (
     <Container data-variant={variant} data-border={hasBorder}>
       <Header>
@@ -59,12 +73,15 @@ const Calendar = ({
           return (
             <Content
               key={`date_${date}`}
+              onClick={() => onChangeDate(targetDate)}
               disabled={
                 selectableType === CalendarSelectableType.FUTURE
                   ? today.isAfter(targetDate, "date")
                   : today.isBefore(targetDate, "date")
               }
-              data-today={today.isSame(targetDate, "date")}>
+              data-today={today.isSame(targetDate, "date")}
+              data-included={isIncludedDate(targetDate)}
+              data-selected={isSelectedDate(targetDate)}>
               {date}
             </Content>
           );

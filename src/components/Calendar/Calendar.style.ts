@@ -57,8 +57,21 @@ export const Day = styled.div`
 `;
 export const Content = styled.button`
   color: ${themes.colors.gray3};
+  border-radius: 50%;
 
   &[data-today="true"] {
     color: ${themes.colors.blue};
+  }
+
+  &:not(:disabled) {
+    &[data-selected="true"],
+    &[data-included="true"] {
+      background-color: ${themes.colors.blue};
+      color: ${themes.colors.white};
+    }
+
+    &[data-selected="false"][data-included="true"] {
+      opacity: 0.3;
+    }
   }
 `;

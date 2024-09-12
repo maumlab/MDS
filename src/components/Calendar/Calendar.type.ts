@@ -1,3 +1,5 @@
+import { Dayjs } from "dayjs";
+
 export enum CalendarVariant {
   "SMALL" = "SMALL",
   "MEDIUM" = "MEDIUM",
@@ -6,13 +8,13 @@ export enum CalendarSelectableType {
   "PAST" = "PAST",
   "FUTURE" = "FUTURE",
 }
-export type DateRange = { from: Date | null } | { from: Date | null; to: Date | null };
+export type DateRange = { from: Date | null; to?: Date | null };
 
 export type CalendarProps = {
   variant?: CalendarVariant; // default is 'MEDIUM'
   selectableType?: CalendarSelectableType; // default is 'FUTURE'
   date: DateRange;
-  onChangeDate: (range: DateRange) => void;
+  onChangeDate: (date: Dayjs) => void;
   hasBorder?: boolean; // default is true
 };
 
