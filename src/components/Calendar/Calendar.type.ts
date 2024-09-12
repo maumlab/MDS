@@ -26,6 +26,7 @@ export type CalendarProps = {
   onChangeDate: (date: Dayjs) => void;
   disabledDays?: Day[];
   hasBorder?: boolean; // default is true
+  limit?: { start?: string; end?: string }; // YYYYMMDD 형식
 };
 
 export type UseCalendarProps = {

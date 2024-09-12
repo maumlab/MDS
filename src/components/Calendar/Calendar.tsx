@@ -12,6 +12,7 @@ const Calendar = ({
   onChangeDate,
   disabledDays,
   hasBorder = true,
+  limit,
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
@@ -41,9 +42,21 @@ const Calendar = ({
   const isDisabledDate = (targetDate: Dayjs) => {
     if (disabledDays?.includes(targetDate.day())) return true;
 
-    return selectableType === CalendarSelectableType.FUTURE
-      ? today.isAfter(targetDate, "date")
-      : today.isBefore(targetDate, "date");
+    if (!limit)
+      return selectableType === CalendarSelectableType.FUTURE
+        ? today.isAfter(targetDate, "date")
+        : today.isBefore(targetDate, "date");
+
+    let limit_Dayjs: { start?: Dayjs; end?: Dayjs } =
+      selectableType === CalendarSelectableType.FUTURE ? { start: today } : { end: today };
+
+    if (limit.start) limit_Dayjs.start = dayjs(limit.start);
+    if (limit.end) limit_Dayjs.end = dayjs(limit.end);
+
+    return (
+      (limit_Dayjs.start && limit_Dayjs.start.isAfter(targetDate, "date")) ||
+      (limit_Dayjs.end && limit_Dayjs.end.isBefore(targetDate, "date"))
+    );
   };
   const isIncludedDate = (targetDate: Dayjs) => {
     if (!selectedDate.from || !selectedDate.to) return false;
