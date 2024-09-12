@@ -74,4 +74,8 @@ export const Content = styled.button`
       opacity: 0.3;
     }
   }
+
+  &[data-holiday="true"] {
+    color: ${themes.colors.red};
+  }
 `;

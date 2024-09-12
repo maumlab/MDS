@@ -81,7 +81,8 @@ const Calendar = ({
               }
               data-today={today.isSame(targetDate, "date")}
               data-included={isIncludedDate(targetDate)}
-              data-selected={isSelectedDate(targetDate)}>
+              data-selected={isSelectedDate(targetDate)}
+              data-holiday={i % 7 === 0}>
               {date}
             </Content>
           );
