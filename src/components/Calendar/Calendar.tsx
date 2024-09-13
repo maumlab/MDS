@@ -19,8 +19,6 @@ const Calendar = ({
   const [month, setMonth] = useState<Dayjs>(dayjs.tz());
   const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
 
-  const isSmall = useMemo(() => variant === CalendarVariant.SMALL, [variant]);
-
   const today = useMemo(() => dayjs.tz(), []);
   const dates = useMemo(() => {
     const firstDay = month.set("date", 1).day();
@@ -80,7 +78,7 @@ const Calendar = ({
         <ChevronButton onClick={onClickPrevMonth}>
           <ChevronLeftIcon size={IconSize.XXS} />
         </ChevronButton>
-        <Text typo={isSmall ? "caption14Bold" : "h4"}>{formattedMonth}</Text>
+        <Text typo={variant === CalendarVariant.SMALL ? "caption14Bold" : "h4"}>{formattedMonth}</Text>
         <ChevronButton onClick={onClickNextMonth}>
           <ChevronRightIcon size={IconSize.XXS} />
         </ChevronButton>
