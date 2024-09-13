@@ -54,6 +54,9 @@ export const Contents = styled.div`
 
 export const Day = styled.div`
   color: ${themes.colors.gray3};
+  &:first-of-type {
+    color: ${themes.colors.red};
+  }
 `;
 export const Content = styled.button`
   color: ${themes.colors.gray3};
