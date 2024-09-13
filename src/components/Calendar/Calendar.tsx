@@ -16,12 +16,12 @@ const Calendar = ({
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  const [month, setMonth] = useState<Dayjs>(dayjs());
+  const [month, setMonth] = useState<Dayjs>(dayjs.tz());
   const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
 
   const isSmall = useMemo(() => variant === CalendarVariant.SMALL, [variant]);
 
-  const today = useMemo(() => dayjs(), []);
+  const today = useMemo(() => dayjs.tz(), []);
   const dates = useMemo(() => {
     const firstDay = month.set("date", 1).day();
     const lastDate = month.daysInMonth();
@@ -50,8 +50,8 @@ const Calendar = ({
     let limit_Dayjs: { start?: Dayjs; end?: Dayjs } =
       selectableType === CalendarSelectableType.FUTURE ? { start: today } : { end: today };
 
-    if (limit.start) limit_Dayjs.start = dayjs(limit.start);
-    if (limit.end) limit_Dayjs.end = dayjs(limit.end);
+    if (limit.start) limit_Dayjs.start = dayjs.tz(limit.start);
+    if (limit.end) limit_Dayjs.end = dayjs.tz(limit.end);
 
     return (
       (limit_Dayjs.start && limit_Dayjs.start.isAfter(targetDate, "date")) ||
@@ -61,14 +61,16 @@ const Calendar = ({
   const isIncludedDate = (targetDate: Dayjs) => {
     if (!selectedDate.from || !selectedDate.to) return false;
 
-    return targetDate.isAfter(dayjs(selectedDate.from), "date") && targetDate.isBefore(dayjs(selectedDate.to), "date");
+    return (
+      targetDate.isAfter(dayjs.tz(selectedDate.from), "date") && targetDate.isBefore(dayjs.tz(selectedDate.to), "date")
+    );
   };
   const isSelectedDate = (targetDate: Dayjs) => {
     if (!selectedDate.from && !selectedDate.to) return false;
 
     return (
-      (selectedDate.from && targetDate.isSame(dayjs(selectedDate.from), "date")) ||
-      (selectedDate.to && targetDate.isSame(dayjs(selectedDate.to), "date"))
+      (selectedDate.from && targetDate.isSame(dayjs.tz(selectedDate.from), "date")) ||
+      (selectedDate.to && targetDate.isSame(dayjs.tz(selectedDate.to), "date"))
     );
   };
 

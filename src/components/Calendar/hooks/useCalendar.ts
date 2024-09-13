@@ -18,7 +18,7 @@ const useCalendar = ({
     if (!date.from || (date.from && date.to)) return { from: formattedDate, to: null };
 
     // targetDate가 from 이전인 경우
-    if (targetDate.isBefore(dayjs(date.from).add(-1, "D"))) return { from: formattedDate, to: null };
+    if (targetDate.isBefore(dayjs.tz(date.from).add(-1, "D"))) return { from: formattedDate, to: null };
 
     // to 선택하는 경우
     return { from: date.from, to: formattedDate };
