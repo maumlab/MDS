@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { CalendarSelectableType, DateRange, UseCalendarOutPut, UseCalendarProps } from "../Calendar.type";
+
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
 import dayjs, { Dayjs } from "dayjs";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+dayjs.tz.setDefault("Asia/Seoul");
 
 const useCalendar = ({
   selectableType = CalendarSelectableType.FUTURE,

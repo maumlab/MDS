@@ -1,11 +1,3 @@
-import utc from "dayjs/plugin/utc";
-import timezone from "dayjs/plugin/timezone";
-import dayjs from "dayjs";
-
-dayjs.extend(utc);
-dayjs.extend(timezone);
-dayjs.tz.setDefault("Asia/Seoul");
-
 export * from "./assets/icons";
 export * from "./assets/icons/icon.type";
 
