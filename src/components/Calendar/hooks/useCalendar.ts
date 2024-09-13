@@ -12,7 +12,7 @@ dayjs.tz.setDefault("Asia/Seoul");
 const useCalendar = ({
   selectableType = CalendarSelectableType.FUTURE,
   isMultiple = false,
-  onChangeDateFallback,
+  onChangeDateCallback,
 }: UseCalendarProps): UseCalendarOutPut => {
   const [date, setDate] = useState<DateRange>(isMultiple ? { from: null, to: null } : { from: null });
 
@@ -34,7 +34,7 @@ const useCalendar = ({
   const onChangeDate = (targetDate: Dayjs) => {
     const range = getRange(targetDate);
     setDate(range);
-    onChangeDateFallback?.(range);
+    onChangeDateCallback?.(range);
   };
 
   return { selectableType, date, onChangeDate };
