@@ -5,7 +5,7 @@ import { CalendarVariant } from "./Calendar.type";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: ${themes.spacing.lg}px;
 
   width: fit-content;
   height: fit-content;
@@ -45,7 +45,7 @@ export const Contents = styled.div`
   }
 
   [data-variant=${CalendarVariant.MEDIUM}] & {
-    gap: 8px;
+    gap: ${themes.spacing.md}px;
     & > * {
       ${themes.typos.caption18Medium}
     }
@@ -60,7 +60,7 @@ export const Day = styled.div`
 `;
 export const Content = styled.button`
   color: ${themes.colors.gray3};
-  border-radius: 50%;
+  ${themes.radius.circle}
 
   &[data-holiday="true"] {
     color: ${themes.colors.red};
