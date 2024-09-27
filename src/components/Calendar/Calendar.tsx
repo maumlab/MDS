@@ -17,10 +17,10 @@ const Calendar = ({
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
-  const [holidays, setHolidays] = useState<{ [year in number]: number[] }>({});
+  const [holidays, setHolidays] = useState<{ [year in number]: number[] }>();
   const [month, setMonth] = useState<Dayjs>(dayjs.tz());
   const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
-  const currentHolidays = useMemo(() => holidays[month.get("year")] ?? [], [holidays, month]);
+  const currentHolidays = useMemo(() => holidays?.[month.get("year")] ?? [], [holidays, month]);
 
   const today = useMemo(() => dayjs.tz(), []);
   const dates = useMemo(() => {
@@ -76,14 +76,23 @@ const Calendar = ({
   };
 
   useEffect(() => {
+    const sessionHolidays = sessionStorage.getItem("holidays");
+    setHolidays(sessionHolidays ? JSON.parse(sessionHolidays) : {});
+  }, []);
+
+  useEffect(() => {
+    if (!holidays) return;
+
     const year = month.get("year");
     if (Object.keys(holidays).includes(year.toString())) return;
 
     (async () => {
-      const newHolidays = await nationalHolidays({ year });
-      setHolidays((prev) => ({ ...prev, [year]: newHolidays }));
+      const monthHolidays = await nationalHolidays({ year });
+      const newHolidays = { ...holidays, [year]: monthHolidays };
+      setHolidays(newHolidays);
+      sessionStorage.setItem("holidays", JSON.stringify(newHolidays));
     })();
-  }, [month]);
+  }, [!holidays, month]);
 
   return (
     <Container data-variant={variant} data-border={hasBorder}>
