@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CalendarProps, CalendarSelectableType, CalendarVariant } from ".";
 import { ChevronLeftIcon, ChevronRightIcon, IconSize } from "../../assets/icons";
 import Text from "../Text";
 import { ChevronButton, Container, Content, Contents, Day, Header } from "./Calendar.style";
 import dayjs, { Dayjs } from "dayjs";
+import { nationalHolidays } from "../../lib";
 
 const Calendar = ({
   variant = CalendarVariant.MEDIUM,
@@ -16,8 +17,10 @@ const Calendar = ({
 }: CalendarProps) => {
   const DAY_OF_THE_WEEK = ["일", "월", "화", "수", "목", "금", "토"];
 
+  const [holidays, setHolidays] = useState<{ [year in number]: number[] }>({});
   const [month, setMonth] = useState<Dayjs>(dayjs.tz());
   const formattedMonth = useMemo(() => month.format("YYYY년 MM월"), [month]);
+  const currentHolidays = useMemo(() => holidays[month.get("year")] ?? [], [holidays, month]);
 
   const today = useMemo(() => dayjs.tz(), []);
   const dates = useMemo(() => {
@@ -72,6 +75,16 @@ const Calendar = ({
     );
   };
 
+  useEffect(() => {
+    const year = month.get("year");
+    if (Object.keys(holidays).includes(year.toString())) return;
+
+    (async () => {
+      const newHolidays = await nationalHolidays({ year });
+      setHolidays((prev) => ({ ...prev, [year]: newHolidays }));
+    })();
+  }, [month]);
+
   return (
     <Container data-variant={variant} data-border={hasBorder}>
       <Header>
@@ -96,7 +109,7 @@ const Calendar = ({
               key={`date_${date}`}
               onClick={() => onChangeDate(targetDate)}
               disabled={isDisabledDate(targetDate)}
-              data-holiday={i % 7 === 0}
+              data-holiday={i % 7 === 0 || currentHolidays.includes(+targetDate.format("YYYYMMDD"))}
               data-today={today.isSame(targetDate, "date")}
               data-included={isIncludedDate(targetDate)}
               data-selected={isSelectedDate(targetDate)}>
