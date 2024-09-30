@@ -1,0 +1,19 @@
+on:
+  pull_request:
+
+name: Notify PR MDS
+
+jobs:
+  deploy:
+    name: Notify PR MDS
+    runs-on: ubuntu-latest
+    steps:
+      - name: action-slack
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          author_name: make a PULL REQUEST <${{github.ref}}>
+          fields: repo,commit,message,author # action,eventName,ref,workflow,job,took 추가할 수 있음
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.FRONT_PR_WEBHOOK_URL }} # required
+        if: always() # Pick up events even if the job fails or is canceled.

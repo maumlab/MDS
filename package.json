@@ -38,6 +38,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
+    "dayjs": "^1.11.13",
     "next": "^12.3.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -74,7 +75,8 @@
     "next": "^12.2.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-hook-form": "^6.15.4"
+    "react-hook-form": "^6.15.4",
+    "dayjs": ">=1.10.6"
   },
   "keywords": [],
   "license": "ISC",
