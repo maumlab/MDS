@@ -5,7 +5,8 @@ export type SegmentedControlVariant = "basic" | "outlined";
 export type SegmentedControlProviderProps = {
   variant: SegmentedControlVariant;
   selectedValue: string;
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
+  disabled?: boolean;
 };
 
 export type SegmentedControlProps = {
