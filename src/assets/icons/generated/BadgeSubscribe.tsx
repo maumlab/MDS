@@ -11,8 +11,6 @@ export const BadgeSubscribe = React.memo<IconProps>(
     suffixForId,
     ...props
   }) => {
-    const uniqueId =
-      suffixForId ?? String(Math.random().toString(36).slice(2, 11));
     return (
       <Svg
         {...props}
@@ -29,7 +27,7 @@ export const BadgeSubscribe = React.memo<IconProps>(
           />
         </g>
         <defs>
-          <clipPath id={`badge_subscribe_svg__clip0_1334_21367__${uniqueId}`}>
+          <clipPath id="badge_subscribe_svg__clip0_1334_21367">
             <path fill="#fff" d="M0 0h24v24H0z" />
           </clipPath>
         </defs>

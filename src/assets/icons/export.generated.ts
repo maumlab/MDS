@@ -14,6 +14,7 @@ export { CardActive as CardActiveIcon } from "./generated/CardActive";
 export { CardInactive as CardInactiveIcon } from "./generated/CardInactive";
 export { ChartActive as ChartActiveIcon } from "./generated/ChartActive";
 export { ChartInactive as ChartInactiveIcon } from "./generated/ChartInactive";
+export { Check as CheckIcon } from "./generated/Check";
 export { ChevronDown as ChevronDownIcon } from "./generated/ChevronDown";
 export { ChevronLeft as ChevronLeftIcon } from "./generated/ChevronLeft";
 export { ChevronRight as ChevronRightIcon } from "./generated/ChevronRight";
