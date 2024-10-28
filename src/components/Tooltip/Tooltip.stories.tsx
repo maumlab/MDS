@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Tooltip from "./Tooltip";
@@ -9,7 +9,8 @@ export default {
   component: Tooltip,
   tags: ["autodocs"],
   parameters: {
-    componentSubtitle: "사용자에게 도움을 줄 수 있는 정보를 노출 시킵니다. hover, focus 등의 액션을 이용합니다.",
+    componentSubtitle:
+      "사용자에게 도움을 줄 수 있는 정보를 노출 시킵니다. hover, focus 등의 액션을 이용합니다.",
   },
   args: {
     content: "툴팁의 내용입니다.",
@@ -26,14 +27,23 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
         backgroundColor: "lightpink",
         border: "1px solid red",
         color: "white",
-      }}>
+      }}
+    >
       {children}
     </div>
   );
 
   return (
     <>
-      <div style={{ width: 600, height: 100, display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+      <div
+        style={{
+          width: 600,
+          height: 100,
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
         <Tooltip {...args} position="top" triPosition="left">
           <Trigger>Top-Left</Trigger>
         </Tooltip>
@@ -44,7 +54,15 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
           <Trigger>Top-Right</Trigger>
         </Tooltip>
       </div>
-      <div style={{ width: 600, height: 100, display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+      <div
+        style={{
+          width: 600,
+          height: 100,
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
         <Tooltip {...args} position="bottom" triPosition="left">
           <Trigger>Bottom-Left</Trigger>
         </Tooltip>
@@ -55,7 +73,15 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
           <Trigger>Bottom-Right</Trigger>
         </Tooltip>
       </div>
-      <div style={{ width: 600, height: 100, display: "flex", justifyContent: "space-around", alignItems: "center" }}>
+      <div
+        style={{
+          width: 600,
+          height: 100,
+          display: "flex",
+          justifyContent: "space-around",
+          alignItems: "center",
+        }}
+      >
         <Tooltip {...args} position="left">
           <Trigger>Left</Trigger>
         </Tooltip>
@@ -64,6 +90,54 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
         </Tooltip>
       </div>
     </>
+  );
+};
+
+const PortalTemplate = (args) => {
+  const portalRef = useRef<HTMLElement>(null);
+
+  const Trigger = ({ children }: { children?: React.ReactNode }) => (
+    <div
+      style={{
+        padding: 6,
+        borderRadius: 4,
+        backgroundColor: "lightpink",
+        border: "1px solid red",
+        color: "white",
+      }}
+    >
+      {children}
+    </div>
+  );
+
+  return (
+    <div style={{ height: "100dvh" }}>
+      <section
+        ref={portalRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: 500,
+          height: 300,
+          maxHeight: 600,
+          overflowY: "scroll",
+          backgroundColor: "yellow",
+        }}
+      >
+        <Tooltip
+          {...args}
+          position="top"
+          triPosition="left"
+          portalRef={portalRef}
+        >
+          <Trigger>Top-Left</Trigger>
+        </Tooltip>
+      </section>
+      <section
+        style={{ backgroundColor: "red", width: 1000, height: "200dvh" }}
+      ></section>
+    </div>
   );
 };
 
@@ -82,8 +156,26 @@ export const ContentWithElement = Template.bind({});
 ContentWithElement.args = {
   content: (
     <div>
-      <div style={{ padding: 4, borderRadius: 4, backgroundColor: "lightseagreen", color: "white" }}>Badge</div>
-      <div style={{ padding: 4, borderRadius: 4, backgroundColor: "lightcoral", color: "white" }}>Badge</div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          backgroundColor: "lightseagreen",
+          color: "white",
+        }}
+      >
+        Badge
+      </div>
+      <div
+        style={{
+          padding: 4,
+          borderRadius: 4,
+          backgroundColor: "lightcoral",
+          color: "white",
+        }}
+      >
+        Badge
+      </div>
     </div>
   ),
 };
@@ -92,3 +184,5 @@ export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
 };
+
+export const Portal = PortalTemplate.bind({});

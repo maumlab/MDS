@@ -17,6 +17,7 @@ export type TooltipProps = Partial<TooltipStyleProps> & {
   children: React.ReactElement;
   content: React.ReactNode;
   disabled?: boolean;
+  portalRef?: React.RefObject<HTMLElement>;
 };
 
 export type UseTooltipPositionProps = {
@@ -25,4 +26,4 @@ export type UseTooltipPositionProps = {
   tooltipRef: React.RefObject<HTMLDivElement> | null;
   position: TooltipPosition;
   triPosition: TooltipTriPosition;
-};
+} & Pick<TooltipProps, "portalRef">;

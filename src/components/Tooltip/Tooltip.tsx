@@ -13,6 +13,7 @@ const Tooltip = ({
   zIndex,
   content,
   disabled = false,
+  portalRef,
 }: TooltipProps) => {
   // refs
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -35,7 +36,11 @@ const Tooltip = ({
     if (!container) {
       const newContainer = document.createElement("div");
       newContainer.id = uniqueId;
-      document.body.appendChild(newContainer);
+      if (portalRef) {
+        portalRef.current?.appendChild(newContainer);
+      } else {
+        document.body.appendChild(newContainer);
+      }
       setContainer(newContainer);
     }
 
@@ -53,10 +58,22 @@ const Tooltip = ({
   };
 
   // tooltip의 위치를 정하는 로직
-  useTooltipPosition({ container, triggerRef, tooltipRef, position, triPosition });
+  useTooltipPosition({
+    container,
+    triggerRef,
+    tooltipRef,
+    position,
+    triPosition,
+  });
 
   return (
-    <Wrapper ref={triggerRef} onMouseEnter={open} onMouseLeave={close} onFocus={open} onBlur={close}>
+    <Wrapper
+      ref={triggerRef}
+      onMouseEnter={open}
+      onMouseLeave={close}
+      onFocus={open}
+      onBlur={close}
+    >
       {children}
       <Portal container={container}>
         <TooltipWrapper
@@ -65,7 +82,8 @@ const Tooltip = ({
           $position={position}
           $triPosition={triPosition}
           $color={color}
-          $zIndex={zIndex}>
+          $zIndex={zIndex}
+        >
           {content}
           <Tri className="tri" />
         </TooltipWrapper>
