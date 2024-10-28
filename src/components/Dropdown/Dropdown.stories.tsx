@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Dropdown from "./Dropdown";
@@ -251,6 +251,71 @@ const MultipleLineTemplate: ComponentStory<typeof Dropdown> = (args) => {
   );
 };
 
+// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
+const ContainerTemplate: ComponentStory<typeof Dropdown> = (args) => {
+  const [selectedValue, setSelectedValue] = useState<{
+    label: string;
+    value: string;
+  }>();
+  const options = ["A", "B", "C", "D"].map((option) => ({
+    label: option + "label",
+    value: option + "value",
+  }));
+  const portalRef = useRef<HTMLElement>(null);
+
+  return (
+    <div style={{ height: "100dvh" }}>
+      <section
+        ref={portalRef}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: 500,
+          height: 300,
+          maxHeight: 600,
+          overflowY: "scroll",
+          backgroundColor: "yellow",
+        }}
+      >
+        <Dropdown
+          {...args}
+          portalRef={portalRef}
+          onChange={(e, newValue) => {
+            const findOption = options.find(
+              (option) => option.label === newValue
+            );
+            if (findOption) {
+              setSelectedValue(findOption);
+            }
+          }}
+        >
+          <Dropdown.Trigger>
+            <Dropdown.Bar
+              placeholder="내용을 선택해 주세요."
+              value={selectedValue?.label}
+              aria-label="Dropdown"
+            />
+          </Dropdown.Trigger>
+          <Dropdown.OptionList>
+            {options.map((option) => (
+              <Dropdown.Option
+                value={option.label}
+                selected={option.value === selectedValue?.value}
+                disabled={option.value === options[2].value}
+                key={option.value}
+              />
+            ))}
+          </Dropdown.OptionList>
+        </Dropdown>
+      </section>
+      <section
+        style={{ backgroundColor: "red", width: 1000, height: "200dvh" }}
+      ></section>
+    </div>
+  );
+};
+
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {};
@@ -264,3 +329,5 @@ export const CustomTrigger = CustomTriggerTemplate.bind({});
 export const Ellipsis = EllipsisTemplate.bind({});
 
 export const MultipleLine = MultipleLineTemplate.bind({});
+
+export const Container = ContainerTemplate.bind({});

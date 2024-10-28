@@ -6,13 +6,16 @@ const useOptionListPosition = ({
   triggerRef,
   optionListRef,
   optionVariant,
+  portalRef,
 }: UseOptionListPositionProps) => {
   const changeOptionListPosition = useCallback(() => {
     const triggerElement = triggerRef?.current;
     const optionListElement = optionListRef?.current;
 
     if (optionListElement && triggerElement) {
-      const windowScrollY = window.scrollY;
+      const windowScrollY = portalRef?.current
+        ? portalRef.current.scrollTop
+        : window.scrollY;
       const windowScrollX = window.scrollX;
       const windowScrollWidth = document.body.scrollWidth;
       const triggerBoundingRect = triggerElement.getBoundingClientRect();

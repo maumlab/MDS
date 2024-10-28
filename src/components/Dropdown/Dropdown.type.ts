@@ -29,12 +29,14 @@ export interface DropdownProps<T = string> {
   multiple?: boolean;
   optionVariant?: DropdownOptionVariantType;
   children: React.ReactNode;
+  portalRef?: React.RefObject<HTMLElement>;
 }
 
 export type UseOptionListPositionProps = Pick<
   DropdownProviderProps,
   "container" | "triggerRef" | "optionListRef" | "optionVariant"
->;
+> &
+  Pick<DropdownProps, "portalRef">;
 
 export type DropdownBarProps<T = string> = ComponentPropsWithRef<"div"> & {
   value?: T;

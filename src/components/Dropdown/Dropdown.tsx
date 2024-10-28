@@ -50,6 +50,7 @@ const Dropdown = <T,>({
   multiple = false,
   optionVariant = "default",
   children,
+  portalRef,
 }: DropdownProps) => {
   // refs
   const triggerRef = useRef<HTMLElement>(null);
@@ -65,7 +66,11 @@ const Dropdown = <T,>({
   const open = () => {
     const newContainer = document.createElement("div");
     newContainer.id = uniqueId;
-    document.body.appendChild(newContainer);
+    if (portalRef) {
+      portalRef.current?.appendChild(newContainer);
+    } else {
+      document.body.appendChild(newContainer);
+    }
     setContainer(newContainer);
   };
   const close = () => {
@@ -83,6 +88,7 @@ const Dropdown = <T,>({
     triggerRef,
     optionListRef,
     optionVariant,
+    portalRef,
   });
   // event handlers
   useClick({
