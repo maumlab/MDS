@@ -15,13 +15,38 @@ const useTooltipPosition = ({
     const tooltipElement = tooltipRef?.current;
     if (!triggerElement || !tooltipElement) return;
 
-    const windowScrollY = portalRef?.current
-      ? portalRef.current.scrollTop
-      : window.scrollY;
-    const windowScrollX = window.scrollX;
-    const windowScrollWidth = document.body.scrollWidth;
-    const windowClientWidth = document.body.clientWidth;
-    const triggerBoundingRect = triggerElement.getBoundingClientRect();
+    let windowScrollY,
+      windowScrollX,
+      windowScrollWidth,
+      windowClientWidth,
+      triggerBoundingRect;
+
+    console.log(portalRef);
+
+    if (portalRef?.current) {
+      windowScrollY = portalRef.current.scrollTop;
+      windowScrollX = portalRef.current.scrollLeft;
+      windowScrollWidth = portalRef.current.scrollWidth;
+      windowClientWidth = portalRef.current.clientWidth;
+      const portalBoundingRect = portalRef.current.getBoundingClientRect();
+      const childBoundingRect = triggerElement.getBoundingClientRect();
+      triggerBoundingRect = {
+        top: childBoundingRect.top - portalBoundingRect.top,
+        right: childBoundingRect.right - portalBoundingRect.left,
+        bottom: childBoundingRect.bottom - portalBoundingRect.top,
+        left: childBoundingRect.left - portalBoundingRect.left,
+        width: childBoundingRect.width,
+        height: childBoundingRect.height,
+      };
+    } else {
+      windowScrollY = window.scrollY;
+      windowScrollX = window.scrollX;
+      windowScrollWidth = document.body.scrollWidth;
+      windowClientWidth = document.body.clientWidth;
+      triggerBoundingRect = triggerElement.getBoundingClientRect();
+    }
+
+    // const windowClientWidth = document.body.clientWidth;
     const gap = themes.spacing.xs;
 
     switch (triPosition) {

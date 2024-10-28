@@ -13,12 +13,28 @@ const useOptionListPosition = ({
     const optionListElement = optionListRef?.current;
 
     if (optionListElement && triggerElement) {
-      const windowScrollY = portalRef?.current
-        ? portalRef.current.scrollTop
-        : window.scrollY;
-      const windowScrollX = window.scrollX;
-      const windowScrollWidth = document.body.scrollWidth;
-      const triggerBoundingRect = triggerElement.getBoundingClientRect();
+      let windowScrollY, windowScrollX, windowScrollWidth, triggerBoundingRect;
+
+      if (portalRef?.current) {
+        windowScrollY = portalRef.current.scrollTop;
+        windowScrollX = portalRef.current.scrollLeft;
+        windowScrollWidth = portalRef.current.scrollWidth;
+        const portalBoundingRect = portalRef.current.getBoundingClientRect();
+        const childBoundingRect = triggerElement.getBoundingClientRect();
+        triggerBoundingRect = {
+          top: childBoundingRect.top - portalBoundingRect.top,
+          right: childBoundingRect.right - portalBoundingRect.left,
+          bottom: childBoundingRect.bottom - portalBoundingRect.top,
+          left: childBoundingRect.left - portalBoundingRect.left,
+          width: childBoundingRect.width,
+          height: childBoundingRect.height,
+        };
+      } else {
+        windowScrollY = window.scrollY;
+        windowScrollX = window.scrollX;
+        windowScrollWidth = document.body.scrollWidth;
+        triggerBoundingRect = triggerElement.getBoundingClientRect();
+      }
 
       optionListElement.style.minWidth = `${triggerBoundingRect.width}px`;
       if (optionVariant === "ellipsis" || optionVariant === "multiple") {

@@ -116,11 +116,10 @@ const PortalTemplate = (args) => {
         ref={portalRef}
         style={{
           position: "fixed",
-          top: 0,
-          left: 0,
+          top: 95,
+          left: 162,
           width: 500,
           height: 300,
-          maxHeight: 600,
           overflowY: "scroll",
           backgroundColor: "yellow",
         }}
