@@ -2,6 +2,9 @@ import React, { useRef } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
 import Tooltip from "./Tooltip";
+import { OutlinedHelpIcon } from "../../assets/icons";
+import styled from "@emotion/styled";
+import Text from "../Text";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -96,20 +99,6 @@ const Template: ComponentStory<typeof Tooltip> = (args) => {
 const PortalTemplate = (args) => {
   const portalRef = useRef<HTMLElement>(null);
 
-  const Trigger = ({ children }: { children?: React.ReactNode }) => (
-    <div
-      style={{
-        padding: 6,
-        borderRadius: 4,
-        backgroundColor: "lightpink",
-        border: "1px solid red",
-        color: "white",
-      }}
-    >
-      {children}
-    </div>
-  );
-
   return (
     <div style={{ height: "100dvh" }}>
       <section
@@ -118,7 +107,7 @@ const PortalTemplate = (args) => {
           position: "fixed",
           top: 95,
           left: 162,
-          width: 500,
+          width: 300,
           height: 300,
           overflowY: "scroll",
           backgroundColor: "yellow",
@@ -129,8 +118,16 @@ const PortalTemplate = (args) => {
           position="top"
           triPosition="left"
           portalRef={portalRef}
+          content={
+            <TooltipContents>
+              <Text typo="caption14Medium">
+                판독 전 척도에 있는 자가보고형 척도가 모두 검사 완료된 경우,
+                환자명 우측에 노출됩니다.
+              </Text>
+            </TooltipContents>
+          }
         >
-          <Trigger>Top-Left</Trigger>
+          <OutlinedHelpIcon />
         </Tooltip>
       </section>
       <section
@@ -139,6 +136,15 @@ const PortalTemplate = (args) => {
     </div>
   );
 };
+
+/* 툴팁 컨텐츠 */
+const TooltipContents = styled.div`
+  width: 250px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 10px;
+  justify-items: center;
+`;
 
 export const Black = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args

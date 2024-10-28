@@ -21,8 +21,6 @@ const useTooltipPosition = ({
       windowClientWidth,
       triggerBoundingRect;
 
-    console.log(portalRef);
-
     if (portalRef?.current) {
       windowScrollY = portalRef.current.scrollTop;
       windowScrollX = portalRef.current.scrollLeft;
@@ -46,7 +44,6 @@ const useTooltipPosition = ({
       triggerBoundingRect = triggerElement.getBoundingClientRect();
     }
 
-    // const windowClientWidth = document.body.clientWidth;
     const gap = themes.spacing.xs;
 
     switch (triPosition) {
@@ -121,7 +118,22 @@ const useTooltipPosition = ({
     }
 
     // 기본 위치가 window를 벗어났을 경우
-    const tooltipBoundingRect = tooltipElement.getBoundingClientRect();
+    let tooltipBoundingRect;
+    if (portalRef?.current) {
+      const portalBoundingRect = portalRef.current.getBoundingClientRect();
+      const childrenBoundingRect = triggerElement.getBoundingClientRect();
+      tooltipBoundingRect = {
+        y: childrenBoundingRect.top - portalBoundingRect.top,
+        right: childrenBoundingRect.right - portalBoundingRect.left,
+        bottom: childrenBoundingRect.bottom - portalBoundingRect.top,
+        left: childrenBoundingRect.left - portalBoundingRect.left,
+        width: childrenBoundingRect.width,
+        height: childrenBoundingRect.height,
+      };
+    } else {
+      tooltipBoundingRect = tooltipElement.getBoundingClientRect();
+    }
+
     if (tooltipBoundingRect.width >= windowClientWidth) {
       // tooltip의 너비가 viewport 너비보다 클 경우
       tooltipElement.style.width = "100%";
