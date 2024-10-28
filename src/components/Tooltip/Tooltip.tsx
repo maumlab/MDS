@@ -46,16 +46,16 @@ const Tooltip = ({
 
     tooltipRef.current?.setAttribute("data-visible", "true");
   };
-  // const close = () => {
-  //   if (!container) return;
+  const close = () => {
+    if (!container) return;
 
-  //   tooltipRef.current?.setAttribute("data-visible", "false");
+    tooltipRef.current?.setAttribute("data-visible", "false");
 
-  //   tooltipTimer.current = setTimeout(() => {
-  //     container.remove();
-  //     setContainer(null);
-  //   }, 400);
-  // };
+    tooltipTimer.current = setTimeout(() => {
+      container.remove();
+      setContainer(null);
+    }, 400);
+  };
 
   // tooltip의 위치를 정하는 로직
   useTooltipPosition({
