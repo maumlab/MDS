@@ -30,6 +30,7 @@ export type CalendarProps = {
 };
 
 export type UseCalendarProps = {
+  defaultDate?: DateRange;
   selectableType?: CalendarSelectableType; // default is 'FUTURE'
   isMultiple?: boolean; // default is false
   onChangeDateCallback?: (range: DateRange) => void;

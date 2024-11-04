@@ -10,11 +10,12 @@ dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Seoul");
 
 const useCalendar = ({
+  defaultDate,
   selectableType = CalendarSelectableType.FUTURE,
   isMultiple = false,
   onChangeDateCallback,
 }: UseCalendarProps): UseCalendarOutPut => {
-  const [date, setDate] = useState<DateRange>(isMultiple ? { from: null, to: null } : { from: null });
+  const [date, setDate] = useState<DateRange>(defaultDate || (isMultiple ? { from: null, to: null } : { from: null }));
 
   const getRange = (targetDate: Dayjs): DateRange => {
     const formattedDate = targetDate.toDate();
