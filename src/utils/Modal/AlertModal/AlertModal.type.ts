@@ -14,4 +14,5 @@ export type AlertModalProps = {
   buttonLabel?: string;
   preventClose?: boolean;
   onConfirm?: () => Promise<void>;
+  disabled?: boolean;
 } & BasicModalProps;

@@ -9,6 +9,7 @@ const AlertModal = ({
   children,
   preventClose = false,
   variant = "primary",
+  disabled = false,
   ...props
 }: AlertModalProps) => {
   const { onClose } = useModal();
@@ -19,6 +20,7 @@ const AlertModal = ({
       <S.ConfirmButton
         data-responsive={props.responsive ?? false}
         variant={variant}
+        disabled={disabled}
         onClick={async () => {
           if (onConfirm) {
             await onConfirm();

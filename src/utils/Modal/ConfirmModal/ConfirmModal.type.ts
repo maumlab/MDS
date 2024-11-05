@@ -8,4 +8,5 @@ export type ConfirmModalProps = {
   cancelVariant?: "gray" | "black";
   confirmVariant?: "primary" | "black";
   preventConfirmClose?: boolean; // onConfirm 함수가 실행된 후 모달을 닫을지 여부
+  disabled?: boolean;
 } & BasicModalProps;
