@@ -38,7 +38,7 @@ const useCalendar = ({
     onChangeDateCallback?.(range);
   };
 
-  return { selectableType, date, onChangeDate };
+  return { selectableType, date, setDate, onChangeDate };
 };
 
 export default useCalendar;

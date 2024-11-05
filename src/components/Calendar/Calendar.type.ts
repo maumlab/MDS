@@ -35,4 +35,6 @@ export type UseCalendarProps = {
   isMultiple?: boolean; // default is false
   onChangeDateCallback?: (range: DateRange) => void;
 };
-export type UseCalendarOutPut = Pick<CalendarProps, "selectableType" | "date" | "onChangeDate">;
+export type UseCalendarOutPut = Pick<CalendarProps, "selectableType" | "date" | "onChangeDate"> & {
+  setDate: React.Dispatch<React.SetStateAction<DateRange>>;
+};
