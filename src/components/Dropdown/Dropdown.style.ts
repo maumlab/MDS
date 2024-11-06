@@ -48,7 +48,7 @@ export const BaseBar = styled.div`
     background-color: ${themes.colors.gray6};
     cursor: not-allowed;
 
-    & > svg {
+    & > * {
       opacity: 0.3;
     }
   }

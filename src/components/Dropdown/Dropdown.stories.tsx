@@ -36,14 +36,9 @@ const Template: ComponentStory<typeof Dropdown> = (args) => {
         if (findOption) {
           setSelectedValue(findOption);
         }
-      }}
-    >
+      }}>
       <Dropdown.Trigger>
-        <Dropdown.Bar
-          placeholder="내용을 선택해 주세요."
-          value={selectedValue?.label}
-          aria-label="Dropdown"
-        />
+        <Dropdown.Bar placeholder="내용을 선택해 주세요." value={selectedValue?.label} aria-label="Dropdown" />
       </Dropdown.Trigger>
       <Dropdown.OptionList>
         {options.map((option) => (
@@ -64,17 +59,9 @@ const DisabledTemplate: ComponentStory<typeof Dropdown> = (args) => {
   const options = ["A", "B", "C", "D"];
 
   return (
-    <Dropdown
-      {...args}
-      disabled={true}
-      onChange={(e, newValue) => setSelectedValue(newValue)}
-    >
+    <Dropdown {...args} disabled={true} onChange={(e, newValue) => setSelectedValue(newValue)}>
       <Dropdown.Trigger>
-        <Dropdown.Bar
-          placeholder="내용을 선택해 주세요."
-          value={selectedValue}
-          aria-label="Dropdown"
-        />
+        <Dropdown.Bar placeholder="내용을 선택해 주세요." value={selectedValue} aria-label="Dropdown" />
       </Dropdown.Trigger>
       <Dropdown.OptionList>
         {options.map((value) => (
@@ -104,8 +91,7 @@ const MultipleTemplate: ComponentStory<typeof Dropdown> = (args) => {
         } else {
           setSelectedValues([...selectedValues, newValue]);
         }
-      }}
-    >
+      }}>
       <Dropdown.Trigger>
         <Dropdown.Bar
           placeholder="내용을 선택해 주세요."
@@ -122,8 +108,7 @@ const MultipleTemplate: ComponentStory<typeof Dropdown> = (args) => {
                 name="checkbox"
                 value={value}
                 checked={selectedValues.some((cur) => cur === value)}
-                disabled={value === options[2]}
-              >
+                disabled={value === options[2]}>
                 {value}
               </Checkbox>
             }
@@ -149,8 +134,7 @@ const CustomTriggerTemplate: ComponentStory<typeof Dropdown> = (args) => {
       {...args}
       onChange={(e, newValue) => {
         setValue("input", newValue);
-      }}
-    >
+      }}>
       <Dropdown.Trigger>
         <div style={{ width: 200 }}>
           <Input ref={register} name="input" />
@@ -162,12 +146,8 @@ const CustomTriggerTemplate: ComponentStory<typeof Dropdown> = (args) => {
             value={value}
             label={
               <span>
-                <span style={{ color: themes.colors.blue }}>
-                  {value.charAt(0)}
-                </span>
-                <span style={{ color: themes.colors.gray1 }}>
-                  {value.slice(1)}
-                </span>
+                <span style={{ color: themes.colors.blue }}>{value.charAt(0)}</span>
+                <span style={{ color: themes.colors.gray1 }}>{value.slice(1)}</span>
               </span>
             }
             selected={value === input}
@@ -186,17 +166,9 @@ const EllipsisTemplate: ComponentStory<typeof Dropdown> = (args) => {
 
   return (
     <div style={{ width: 300 }}>
-      <Dropdown
-        {...args}
-        onChange={(e, newValue) => setSelectedValue(newValue)}
-        optionVariant="ellipsis"
-      >
+      <Dropdown {...args} onChange={(e, newValue) => setSelectedValue(newValue)} optionVariant="ellipsis">
         <Dropdown.Trigger>
-          <Dropdown.Bar
-            placeholder="내용을 선택해 주세요."
-            value={selectedValue}
-            aria-label="Dropdown"
-          />
+          <Dropdown.Bar placeholder="내용을 선택해 주세요." value={selectedValue} aria-label="Dropdown" />
         </Dropdown.Trigger>
         <Dropdown.OptionList>
           {options.map((value) => (
@@ -224,17 +196,9 @@ const MultipleLineTemplate: ComponentStory<typeof Dropdown> = (args) => {
 
   return (
     <div style={{ width: 300 }}>
-      <Dropdown
-        {...args}
-        onChange={(e, newValue) => setSelectedValue(newValue)}
-        optionVariant="multiple"
-      >
+      <Dropdown {...args} onChange={(e, newValue) => setSelectedValue(newValue)} optionVariant="multiple">
         <Dropdown.Trigger>
-          <Dropdown.Bar
-            placeholder="내용을 선택해 주세요."
-            value={selectedValue}
-            aria-label="Dropdown"
-          />
+          <Dropdown.Bar placeholder="내용을 선택해 주세요." value={selectedValue} aria-label="Dropdown" />
         </Dropdown.Trigger>
         <Dropdown.OptionList>
           {options.map((value) => (
@@ -276,26 +240,18 @@ const ContainerTemplate: ComponentStory<typeof Dropdown> = (args) => {
           maxHeight: 600,
           overflowY: "scroll",
           backgroundColor: "yellow",
-        }}
-      >
+        }}>
         <Dropdown
           {...args}
           portalRef={portalRef}
           onChange={(e, newValue) => {
-            const findOption = options.find(
-              (option) => option.label === newValue
-            );
+            const findOption = options.find((option) => option.label === newValue);
             if (findOption) {
               setSelectedValue(findOption);
             }
-          }}
-        >
+          }}>
           <Dropdown.Trigger>
-            <Dropdown.Bar
-              placeholder="내용을 선택해 주세요."
-              value={selectedValue?.label}
-              aria-label="Dropdown"
-            />
+            <Dropdown.Bar placeholder="내용을 선택해 주세요." value={selectedValue?.label} aria-label="Dropdown" />
           </Dropdown.Trigger>
           <Dropdown.OptionList>
             {options.map((option) => (
@@ -309,9 +265,7 @@ const ContainerTemplate: ComponentStory<typeof Dropdown> = (args) => {
           </Dropdown.OptionList>
         </Dropdown>
       </section>
-      <section
-        style={{ backgroundColor: "red", width: 1000, height: "200dvh" }}
-      ></section>
+      <section style={{ backgroundColor: "red", width: 1000, height: "200dvh" }}></section>
     </div>
   );
 };
