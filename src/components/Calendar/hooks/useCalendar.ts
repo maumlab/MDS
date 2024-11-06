@@ -22,8 +22,11 @@ const useCalendar = ({
 
     if (!isMultiple) return { from: formattedDate };
 
-    // from이 선택되지 않았거나 / 둘 다 선택된 경우
-    if (!date.from || (date.from && date.to)) return { from: formattedDate, to: null };
+    // from, to가 둘 다 선택된 경우
+    if (date.from && date.to) return { from: formattedDate, to: null };
+
+    // from이 선택되지 않은 경우
+    if (!date.from) return { from: formattedDate, to: date.to };
 
     // targetDate가 from 이전인 경우
     if (targetDate.isBefore(dayjs.tz(date.from).add(-1, "D"))) return { from: formattedDate, to: null };
