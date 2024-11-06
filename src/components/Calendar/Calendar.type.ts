@@ -29,9 +29,8 @@ export type CalendarProps = {
   limit?: { start?: string; end?: string }; // YYYYMMDD 형식
 };
 
-export type UseCalendarProps = {
+export type UseCalendarProps = Pick<CalendarProps, "selectableType"> & {
   defaultDate?: DateRange;
-  selectableType?: CalendarSelectableType; // default is 'FUTURE'
   isMultiple?: boolean; // default is false
   onChangeDateCallback?: (range: DateRange) => void;
 };

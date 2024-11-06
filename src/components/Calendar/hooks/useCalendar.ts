@@ -25,11 +25,15 @@ const useCalendar = ({
     // from, to가 둘 다 선택된 경우
     if (date.from && date.to) return { from: formattedDate, to: null };
 
+    // targetDate가 선택할 수 있는 범위를 벗어난 경우 (from 이전이거나 to 이후인 경우)
+    if (
+      (date.from && targetDate.isBefore(dayjs.tz(date.from).add(-1, "D"))) ||
+      (date.to && targetDate.isAfter(dayjs.tz(date.to).add(1, "D")))
+    )
+      return { from: formattedDate, to: null };
+
     // from이 선택되지 않은 경우
     if (!date.from) return { from: formattedDate, to: date.to };
-
-    // targetDate가 from 이전인 경우
-    if (targetDate.isBefore(dayjs.tz(date.from).add(-1, "D"))) return { from: formattedDate, to: null };
 
     // to 선택하는 경우
     return { from: date.from, to: formattedDate };

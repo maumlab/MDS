@@ -23,6 +23,7 @@ const Template: ComponentStory<typeof Calendar> = ({
 }) => {
   const pastProps = useCalendar({ selectableType: CalendarSelectableType.PAST, isMultiple });
   const futureProps = useCalendar({ selectableType: CalendarSelectableType.FUTURE, isMultiple });
+
   return (
     <div style={{ display: "flex", gap: 10 }}>
       <Calendar {...args} {...pastProps} variant={CalendarVariant.SMALL} />
