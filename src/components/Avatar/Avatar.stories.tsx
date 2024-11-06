@@ -10,54 +10,20 @@ export default {
   component: Avatar,
   tags: ["autodocs"],
   parameters: {
-    componentSubtitle:
-      "아바타는 사용자의 프로필을 나타낼 때 사용되어집니다. 뱃지나 태그와 함께 사용될 수 있습니다.",
+    componentSubtitle: "아바타는 사용자의 프로필을 나타낼 때 사용되어집니다. 뱃지나 태그와 함께 사용될 수 있습니다.",
   },
 } as ComponentMeta<typeof Avatar>;
 
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Avatar> = (args) => <Avatar {...args} />;
 
-const MetriTemplate: ComponentStory<typeof Avatar> = (args) => {
+const SizeTemplate: ComponentStory<typeof Avatar> = ({ variant }) => {
   return (
     <div>
-      <Avatar variant="metri" size={AvatarSize.xl} />
-      <Avatar variant="metri" size={AvatarSize.lg} />
-      <Avatar variant="metri" size={AvatarSize.md} />
-      <Avatar variant="metri" size={AvatarSize.sm} />
-    </div>
-  );
-};
-
-const TabletTemplate: ComponentStory<typeof Avatar> = (args) => {
-  return (
-    <div>
-      <Avatar variant="tablet" size={AvatarSize.xl} />
-      <Avatar variant="tablet" size={AvatarSize.lg} />
-      <Avatar variant="tablet" size={AvatarSize.md} />
-      <Avatar variant="tablet" size={AvatarSize.sm} />
-    </div>
-  );
-};
-
-const ClientTemplate: ComponentStory<typeof Avatar> = (args) => {
-  return (
-    <div>
-      <Avatar variant="client" size={AvatarSize.xl} />
-      <Avatar variant="client" size={AvatarSize.lg} />
-      <Avatar variant="client" size={AvatarSize.md} />
-      <Avatar variant="client" size={AvatarSize.sm} />
-    </div>
-  );
-};
-
-const DashboardTemplate: ComponentStory<typeof Avatar> = (args) => {
-  return (
-    <div>
-      <Avatar variant="dashboard" size={AvatarSize.xl} />
-      <Avatar variant="dashboard" size={AvatarSize.lg} />
-      <Avatar variant="dashboard" size={AvatarSize.md} />
-      <Avatar variant="dashboard" size={AvatarSize.sm} />
+      <Avatar variant={variant} size={AvatarSize.xl} />
+      <Avatar variant={variant} size={AvatarSize.lg} />
+      <Avatar variant={variant} size={AvatarSize.md} />
+      <Avatar variant={variant} size={AvatarSize.sm} />
     </div>
   );
 };
@@ -69,10 +35,17 @@ Primary.args = {
   size: AvatarSize.xl,
 };
 
-export const Metri = MetriTemplate.bind({});
+export const Metri = SizeTemplate.bind({});
+Metri.args = { variant: "metri" };
 
-export const Tablet = TabletTemplate.bind({});
+export const Unauthenticated = SizeTemplate.bind({});
+Unauthenticated.args = { variant: "unauthenticated" };
 
-export const Client = ClientTemplate.bind({});
+export const Clinic = SizeTemplate.bind({});
+Clinic.args = { variant: "clinic" };
 
-export const Dashboard = DashboardTemplate.bind({});
+export const Client = SizeTemplate.bind({});
+Client.args = { variant: "client" };
+
+export const Dashboard = SizeTemplate.bind({});
+Dashboard.args = { variant: "dashboard" };

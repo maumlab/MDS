@@ -1,17 +1,14 @@
 import { AvatarProps, AvatarSize } from "./Avatar.type";
-import {
-  AvatarClientIcon,
-  AvatarDashboardIcon,
-  AvatarMetriIcon,
-  AvatarTabletIcon,
-} from "./svgr/export.generated";
+import { AvatarClientIcon, AvatarDashboardIcon, AvatarMetriIcon, AvatarClinicIcon } from "./svgr/export.generated";
 
 const Avatar = ({ variant, size = AvatarSize.xl }: AvatarProps) => {
   switch (variant) {
     case "metri":
       return <AvatarMetriIcon size={size} />;
-    case "tablet":
-      return <AvatarTabletIcon size={size} />;
+    case "unauthenticated":
+      return <AvatarClientIcon size={size} opacity={0.7} />;
+    case "clinic":
+      return <AvatarClinicIcon size={size} />;
     case "client":
       return <AvatarClientIcon size={size} />;
     case "dashboard":

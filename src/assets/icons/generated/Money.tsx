@@ -1,12 +1,25 @@
 import React from "react";
 import { IconProps } from "../index";
 import { IconSize } from "../icon.type";
+import { themes } from "../../../styles";
 import Svg from "../../svg";
-
 export const Money = React.memo<IconProps>(
-  ({ size = IconSize.S, fillColor = "gray2", viewBox = "0 0 24 24", suffixForId, ...props }) => {
+  ({
+    size = IconSize.S,
+    fillColor = "gray2",
+    viewBox = "0 0 24 24",
+    suffixForId,
+    ...props
+  }) => {
     return (
-      <Svg {...props} width={size} height={size} fill="none" xmlns="http://www.w3.org/2000/svg" viewBox={viewBox}>
+      <Svg
+        {...props}
+        width={size}
+        height={size}
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox={viewBox}
+      >
         <path
           d="M2 12c0-4.166 0-6.25 1.061-7.71a5.555 5.555 0 011.23-1.229C5.75 2 7.833 2 12 2c4.166 0 6.25 0 7.71 1.061.472.343.886.757 1.229 1.23C22 5.75 22 7.833 22 12c0 4.166 0 6.25-1.061 7.71a5.557 5.557 0 01-1.23 1.229C18.25 22 16.167 22 12 22c-4.166 0-6.25 0-7.71-1.061a5.557 5.557 0 01-1.229-1.23C2 18.25 2 16.167 2 12z"
           stroke="#656565"

@@ -5,7 +5,7 @@ export enum AvatarSize {
   "sm" = 40,
 }
 
-export type AvatarVariant = "metri" | "tablet" | "client" | "dashboard";
+export type AvatarVariant = "metri" | "unauthenticated" | "clinic" | "client" | "dashboard";
 
 export type AvatarProps = {
   variant: AvatarVariant;
