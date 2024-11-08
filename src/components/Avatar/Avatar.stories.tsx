@@ -41,6 +41,9 @@ Metri.args = { variant: "metri" };
 export const Unauthenticated = SizeTemplate.bind({});
 Unauthenticated.args = { variant: "unauthenticated" };
 
+export const Employee = SizeTemplate.bind({});
+Employee.args = { variant: "employee" };
+
 export const Clinic = SizeTemplate.bind({});
 Clinic.args = { variant: "clinic" };
 
