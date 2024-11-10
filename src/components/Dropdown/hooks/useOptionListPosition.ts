@@ -42,7 +42,7 @@ const useOptionListPosition = ({
       }
 
       optionListElement.style.top = `${
-        windowScrollY + triggerBoundingRect.bottom + 10
+        windowScrollY + triggerBoundingRect.bottom + 4
       }px`;
       optionListElement.style.left = `${
         windowScrollX + triggerBoundingRect.left
