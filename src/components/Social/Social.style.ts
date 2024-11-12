@@ -8,6 +8,12 @@ export const BaseSocial = styled.button<{ $type: SocialType }>`
   align-items: center;
 
   ${({ $type }) => {
+    const circleStyle = css`
+      width: 60px;
+      height: 60px;
+      ${themes.radius.circle};
+    `;
+
     switch ($type) {
       case "primary":
         return css`
@@ -19,11 +25,11 @@ export const BaseSocial = styled.button<{ $type: SocialType }>`
         `;
       case "secondary":
         return css`
-          width: 60px;
-          height: 60px;
-          ${themes.radius.circle};
+          ${circleStyle}
           border: 1px solid ${themes.colors.gray9};
         `;
+      case "tertiary":
+        return circleStyle;
     }
   }}
 `;
