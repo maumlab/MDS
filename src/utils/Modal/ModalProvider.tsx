@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { ModalType } from "./Modal.type";
 
 export const ModalContext = createContext<{
+  isOpen: boolean;
   onOpen: <T>(modal: ModalType<T>) => void;
   onClose: (key: string) => void;
   onClear: () => void;
@@ -47,6 +48,7 @@ const ModalProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <ModalContext.Provider
       value={{
+        isOpen: modals.length > 0,
         onOpen,
         onClose,
         onClear,
