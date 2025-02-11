@@ -37,6 +37,7 @@ SegmentedControl.Item = ({ children, value }: SegmentedControlItemProps) => {
 
   return (
     <ItemContainer
+      type="button"
       data-active={active}
       $variant={variant}
       onClick={() => onChange?.(value)}
