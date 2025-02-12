@@ -25,12 +25,12 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
         ref={ref}
         {...props}
         style={{
-          ...props.style,
           textAlign: align,
           wordBreak,
           color: themes.colors[color],
           lineHeight: lineHeight ? `${lineHeight}px` : "normal",
           whiteSpace,
+          ...props.style,
         }}
         $typo={typo}
         $truncate={truncate}
