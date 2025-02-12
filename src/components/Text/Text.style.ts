@@ -5,6 +5,7 @@ import { themes, TypoType } from "../../styles";
 export const BaseText = styled.span<{
   $typo: TypoType;
   $truncate?: number;
+  $whitespace?: string;
 }>`
   ${({ $typo }) => themes.typos[$typo]}
 
@@ -18,4 +19,8 @@ export const BaseText = styled.span<{
       -webkit-line-clamp: ${$truncate};
       -webkit-box-orient: vertical;
     `}
+
+    ${({ $whitespace }) => css`
+    white-space: ${$whitespace};
+  `}
 `;

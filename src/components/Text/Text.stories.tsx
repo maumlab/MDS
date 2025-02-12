@@ -141,11 +141,17 @@ const TyposTemplate: ComponentStory<typeof Text> = (args) => {
 
 const WhiteSpaceTemplate: ComponentStory<typeof Text> = (args) => {
   return (
-    <Text {...args}>
+    <ResponsiveText {...args} whiteSpace="pre-wrap">
       {`Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.`}
-    </Text>
+    </ResponsiveText>
   );
 };
+
+const ResponsiveText = styled(Text)`
+  @media screen and (max-width: 768px) {
+    white-space: normal;
+  }
+`;
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
@@ -158,7 +164,7 @@ Primary.args = {
 export const Typos = TyposTemplate.bind({});
 
 export const WhiteSpace = WhiteSpaceTemplate.bind({
-  whiteSpace: "normal",
+  whiteSpace: "pre-wrap",
 });
 
 const Container = styled.div`

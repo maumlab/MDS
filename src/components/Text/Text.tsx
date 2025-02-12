@@ -29,11 +29,11 @@ const Text = forwardRef<ElementRef<"span">, TextProps>(
           wordBreak,
           color: themes.colors[color],
           lineHeight: lineHeight ? `${lineHeight}px` : "normal",
-          whiteSpace,
           ...props.style,
         }}
         $typo={typo}
         $truncate={truncate}
+        $whitespace={whiteSpace}
       >
         {children}
       </BaseText>
