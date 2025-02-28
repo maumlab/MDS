@@ -21,6 +21,9 @@ const Template: ComponentStory<typeof Modal> = (args) => {
       Component: Modal,
       props: {
         _key: "common",
+        onClickOutside: async () => {
+          console.log("first");
+        },
         children: (
           <div
             style={{

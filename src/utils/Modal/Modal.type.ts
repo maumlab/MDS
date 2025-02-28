@@ -7,6 +7,7 @@ export type ModalProps = {
   zIndex?: number;
   children?: React.ReactNode;
   position?: "center" | "left" | "right";
+  onClickOutside?: () => Promise<void>;
 };
 
 export type ModalType<T> = {

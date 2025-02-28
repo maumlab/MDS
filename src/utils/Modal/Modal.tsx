@@ -13,6 +13,7 @@ const Modal = ({
   zIndex = MODAL_Z_INDEX,
   children,
   position = "center",
+  onClickOutside,
 }: ModalProps) => {
   const modalId = useMemo(() => `modal_${_key}`, []);
   const [container, setContainer] = useState<Element | null>(null);
@@ -53,7 +54,10 @@ const Modal = ({
         <div
           className={`overlay mask`}
           style={{ height: overlayHeight }}
-          onClick={() => onClose(_key)}
+          onClick={() => {
+            onClickOutside?.();
+            onClose(_key);
+          }}
         />
         <div className="content" data-position={position} ref={contentRef}>
           {children}
